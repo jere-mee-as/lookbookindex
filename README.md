@@ -13,4 +13,4 @@ Data:
 
 Live at https://jere-mee-as.github.io/lookbookindex/ · Made by Jere.
 
-Images: `.github/workflows/images.yml` runs `scripts/fetch-images.mjs` every Monday, on any change to drops.json/brands.json, or by hand (Actions → Fetch images → Run workflow). It saves each drop's article preview image and each brand's homepage preview image into `covers/` (900px WebP) and records them as `cover` / `img`. Misses are listed in the run summary; to fix one by hand, drop an image in `covers/` and set the field yourself.
+Images: `.github/workflows/images.yml` runs `scripts/fetch-images.mjs` every Monday, on any change to drops.json/brands.json, or by hand (Actions → Fetch images → Run workflow). Drops get their article's preview photo (`cover`). Brands get a logo (`logo`, in `covers/logos/`): Wikidata's logo file first, then the logo on the brand's homepage. Brands still without one are listed in `covers/logos/MISSING.txt`; to add one by hand, save it as `covers/logos/<brand-slug>.webp` (or .png/.svg) and set `logo` on the brand.

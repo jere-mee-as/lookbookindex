@@ -62,8 +62,9 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
 .pic { position: relative; aspect-ratio: 3 / 4; background: var(--tile); margin-bottom: 12px; overflow: hidden; display: grid; place-items: center; }
 .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter .45s ease; }
 .tile:hover .pic img, .tile:focus-visible .pic img, .row:hover .pic img { filter: none; }
-.pic.wide { background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--hair); }
-.pic.wide img { object-fit: contain; filter: none; }
+.pic.logo { background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--hair); }
+.pic.logo img { padding: 22% 16%; object-fit: contain; filter: none; }
+.card .pic.logo { aspect-ratio: 3 / 2; }
 .pic .ph { font-weight: 600; letter-spacing: .2em; text-transform: uppercase; text-align: center; padding: 16px; color: var(--muted); }
 .tb { font-weight: 600; text-transform: uppercase; }
 
@@ -183,7 +184,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
   const key = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "");
   const httpsUrl = (u) => (typeof u === "string" && /^https:\/\//i.test(u)) ? u : null;
   const ext = (href, txt) => { const a = el("a", null, txt); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
-  const okCover = (c) => typeof c === "string" && /^covers\/(brands\/)?[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(c);
+  const okCover = (c) => typeof c === "string" && /^covers\/(logos\/)?[\w.-]+\.(jpe?g|png|webp|gif|svg)$/i.test(c);
   const pd = (d) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ""); return m ? { y: +m[1], m: +m[2] - 1, d: +m[3] } : null; };
   const t = (x) => { const p = pd(x.date); return p ? Date.UTC(p.y, p.m, p.d) : 0; };
   const when = (x) => { const p = pd(x.date); if (!p) return ""; return x.approx ? MON[p.m] + " " + p.y : p.d + " " + MON[p.m]; };
@@ -193,8 +194,8 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
   let saved = null; try { saved = localStorage.getItem("lbi-sort"); } catch (e) {}
   const st = { view: "just", cat: "", q: "", sel: null, sort: ["az", "region", "price"].includes(saved) ? saved : "az" };
 
-  function pic(cover, name, ia) {
-    const d = el("div", ia > 1.25 ? "pic wide" : "pic");
+  function pic(cover, name, logo) {
+    const d = el("div", logo ? "pic logo" : "pic");
     if (okCover(cover)) { const i = el("img"); i.src = cover; i.alt = ""; i.loading = "lazy"; i.onerror = () => { i.remove(); d.append(el("span", "ph", name)); }; d.append(i); }
     else { d.setAttribute("aria-hidden", "true"); d.append(el("span", "ph", name)); }
     return d;
@@ -232,7 +233,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
       const a = el(u ? "a" : "div", "tile");
       if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; }
       const nm = x.kind === "Collab" && /×/.test(x.title || "") ? x.title.split(":")[0].trim() : x.brand;
-      a.append(x.cover ? pic(x.cover, nm, x.ia) : pic(b.img, nm, b.ia), el("span", "tb", nm));
+      a.append(x.cover ? pic(x.cover, nm) : b.logo ? pic(b.logo, nm, true) : pic(null, nm), el("span", "tb", nm));
       if (b.s) a.append(el("span", "mu", b.s));
       a.append(el("span", "mu", [x.season, when(x)].filter(Boolean).join(" · ")));
       g.append(a);
@@ -268,7 +269,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
     const b = st.sel && brands.find((x) => x.n === st.sel);
     if (!b) return;
     const lt = latest.get(key(b.n));
-    c.append(lt && lt.cover ? pic(lt.cover, b.n, lt.ia) : pic(b.img, b.n, b.ia), el("span", "cn", b.n), el("span", "mu", b.s || ""));
+    c.append(b.logo ? pic(b.logo, b.n, true) : lt && lt.cover ? pic(lt.cover, b.n) : pic(null, b.n), el("span", "cn", b.n), el("span", "mu", b.s || ""));
     details(b, c);
   }
   function select(n, rerender) {
