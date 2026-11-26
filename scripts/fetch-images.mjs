@@ -171,7 +171,7 @@ for (const f of await fs.readdir("covers/logos/inbox")) {
   try {
     const raw = await fs.readFile("covers/logos/inbox/" + f);
     // A ".url" file holds a link to the logo image instead of the image itself.
-    const buf = /\.url$/i.test(f) ? await get(raw.toString("utf8").trim(), "buf") : raw;
+    const buf = /\.url$/i.test(f) ? await get(raw.toString("utf8").trim(), "buf", /wiki(media|pedia)\.org/.test(raw.toString("utf8")) ? BOT : UA) : raw;
     b.la = await saveLogo(buf, rel); b.logo = rel; b.logoAuto = false; got++;
     await fs.rm("covers/logos/inbox/" + f);
   } catch (e) { misses.push(`inbox ${f}: ${e.message}`); }
