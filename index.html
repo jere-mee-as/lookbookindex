@@ -73,6 +73,8 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
 .letters { display: flex; flex-wrap: wrap; gap: 6px 14px; }
 .sort { display: flex; gap: 14px; white-space: nowrap; }
 .sort span { color: var(--muted); }
+.sort .sep { color: var(--faint); }
+#rand { color: var(--ink); }
 .sort button { all: unset; cursor: pointer; color: var(--muted); }
 .sort button:hover { color: var(--ink); }
 .sort button[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
@@ -99,6 +101,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
 .out { display: flex; flex-direction: column; margin-top: 14px; border-top: 1px solid var(--hair); }
 .out a { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--hair); text-transform: uppercase; }
 .inl { display: none; }
+.inlogo { display: block; max-height: 44px; max-width: 70%; margin: 6px 0 8px; background: #FFFFFF; padding: 8px; box-sizing: content-box; }
 
 /* elsewhere */
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px 32px; padding-top: 8px; }
@@ -151,7 +154,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
     <section id="v-brands" hidden>
       <div class="bar2">
         <nav class="letters" id="letters" aria-label="Jump to"></nav>
-        <div class="sort" role="group" aria-label="Sort"><span>SORT</span><button type="button" data-s="az">A–Z</button><button type="button" data-s="region">REGION</button><button type="button" data-s="price">PRICE</button></div>
+        <div class="sort" role="group" aria-label="Sort"><span>SORT</span><button type="button" data-s="az">A–Z</button><button type="button" data-s="region">REGION</button><button type="button" data-s="price">PRICE</button><span class="sep" aria-hidden="true">·</span><button type="button" id="rand">RANDOM</button></div>
       </div>
       <div class="split">
         <div class="list" id="list"></div>
@@ -278,7 +281,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
     document.querySelectorAll(".row").forEach((r) => r.setAttribute("aria-expanded", String(r.dataset.n === n)));
     document.querySelectorAll(".inl").forEach((i) => i.remove());
     const r = [...document.querySelectorAll(".row")].find((x) => x.dataset.n === n);
-    if (r) { const b = brands.find((x) => x.n === n); const box = el("div", "inl"); details(b, box); r.after(box); }
+    if (r) { const b = brands.find((x) => x.n === n); const box = el("div", "inl"); if (b.logo && okCover(b.logo)) { const lg = el("img", "inlogo"); lg.src = b.logo; lg.alt = b.n + " logo"; box.append(lg); } details(b, box); r.after(box); }
   }
   function renderBrands() {
     const L = $("#list"); L.replaceChildren();
@@ -298,7 +301,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
       else { a.setAttribute("aria-disabled", "true"); a.tabIndex = -1; }
       lt.append(a);
     }
-    document.querySelectorAll(".sort button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.s === st.sort)));
+    document.querySelectorAll(".sort button[data-s]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.s === st.sort)));
     if (!r.length) { L.append(el("p", "empty", "No brands match.")); $("#card").replaceChildren(); return; }
     for (const [k, list] of groups) {
       if (!list.length) continue;
@@ -317,7 +320,15 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
     select(st.sel, true);
   }
 
-  document.querySelectorAll(".sort button").forEach((b) => { b.onclick = () => {
+  $("#rand").onclick = () => {
+    const list = shown().filter((b) => b.n !== st.sel);
+    if (!list.length) return;
+    const pick = list[Math.floor(Math.random() * list.length)];
+    select(pick.n, true);
+    const r = [...document.querySelectorAll(".row")].find((x) => x.dataset.n === pick.n);
+    if (r) r.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  };
+  document.querySelectorAll(".sort button[data-s]").forEach((b) => { b.onclick = () => {
     st.sort = b.dataset.s; try { localStorage.setItem("lbi-sort", st.sort); } catch (e) {}
     renderBrands(); $("#v-brands").scrollIntoView({ block: "start" }); scrollTo(0, 0);
   }; });
