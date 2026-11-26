@@ -169,7 +169,10 @@ for (const f of await fs.readdir("covers/logos/inbox")) {
   if (!b) { misses.push(`inbox ${f}: no brand with that name`); continue; }
   const rel = "covers/logos/" + slug(b.n) + ".webp";
   try {
-    b.la = await saveLogo(await fs.readFile("covers/logos/inbox/" + f), rel); b.logo = rel; b.logoAuto = false; got++;
+    const raw = await fs.readFile("covers/logos/inbox/" + f);
+    // A ".url" file holds a link to the logo image instead of the image itself.
+    const buf = /\.url$/i.test(f) ? await get(raw.toString("utf8").trim(), "buf") : raw;
+    b.la = await saveLogo(buf, rel); b.logo = rel; b.logoAuto = false; got++;
     await fs.rm("covers/logos/inbox/" + f);
   } catch (e) { misses.push(`inbox ${f}: ${e.message}`); }
 }
