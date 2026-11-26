@@ -1,0 +1,138 @@
+logo  & Other Stories (stories.com): wikidata: HTTP 429; site: HTTP 403
+logo  Acronym (acrnm.com): wikidata: no Wikidata logo; site: HTTP 403
+logo  Ader Error (adererror.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Akris (akris.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Alexander McQueen (alexandermcqueen.com): wikidata: HTTP 429; site: HTTP 403
+logo  Ami Paris (amiparis.com): wikidata: HTTP 429; site: Input buffer has corrupt header: glib: XML parse error: Error domain 3 code 201 on line 10 column 49 of data: Namespace prefix xlink for href on use is not defined
+logo  Anderson & Sheppard (anderson-sheppard.co.uk): wikidata: HTTP 429; site: fetch failed
+logo  Arket (arket.com): wikidata: HTTP 429; site: HTTP 403
+logo  Barba Napoli (no site): wikidata: not on Wikidata
+logo  Beams Plus (beams.co.jp): wikidata: HTTP 429; site: This operation was aborted
+logo  Bianca Saunders (no site): wikidata: no Wikidata logo
+logo  Bode (bode.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Boglioli (boglioli.com): wikidata: HTTP 429; site: fetch failed
+logo  Brioni (brioni.com): wikidata: HTTP 429; site: HTTP 403
+logo  Brooks Brothers (brooksbrothers.com): wikidata: HTTP 429; site: HTTP 403
+logo  Brunello Cucinelli (brunellocucinelli.com): wikidata: no Wikidata logo; site: fetch failed
+logo  COS (cos.com): wikidata: HTTP 429; site: HTTP 403
+logo  Cactus Plant Flea Market (cactusplantfleamarket.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Carhartt WIP (carhartt-wip.com): wikidata: HTTP 429; site: looks like a photo, not a logo
+logo  Casablanca (casablancaparis.com): wikidata: HTTP 429; site: logo too small
+logo  Children of the Discordance (no site): wikidata: HTTP 429
+logo  Club Monaco (clubmonaco.com): wikidata: HTTP 429; site: HTTP 403
+logo  Comme des Garçons (comme-des-garcons.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Comoli (no site): wikidata: no Wikidata logo
+logo  Connor McKnight (no site): wikidata: HTTP 429
+logo  Corteiz (no site): wikidata: no Wikidata logo
+logo  Daily Paper (dailypaperclothing.com): wikidata: no Wikidata logo; site: HTTP 403
+logo  De Petrillo (no site): wikidata: HTTP 429
+logo  Dingyun Zhang (no site): wikidata: HTTP 429
+logo  District Vision (districtvision.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Doublet (no site): wikidata: HTTP 429
+logo  Eckhaus Latta (eckhauslatta.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Egonlab (no site): wikidata: HTTP 429
+logo  Eleventy (eleventy.it): wikidata: no Wikidata logo; site: fetch failed
+logo  Engineered Garments (engineeredgarments.com): wikidata: HTTP 429; site: looks like a photo, not a logo
+logo  Ernest W. Baker (ernestwbaker.com): wikidata: HTTP 429; site: fetch failed
+logo  Facetasm (no site): wikidata: HTTP 429
+logo  Federico Cina (no site): wikidata: no Wikidata logo
+logo  Feng Chen Wang (fengchenwang.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Filippa K (filippa-k.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Frame (frame-store.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Fred Perry (fredperry.com): wikidata: no Wikidata logo; site: HTTP 403
+logo  Fullcount (no site): wikidata: HTTP 429
+logo  Gitman Vintage (gitmanvintage.com): wikidata: HTTP 429; site: no logo on homepage
+logo  GmbH (no site): wikidata: HTTP 429
+logo  Goldwin (goldwin.co.jp): wikidata: HTTP 429; site: HTTP 403
+logo  Gran Sasso (gransasso.it): wikidata: no Wikidata logo; site: HTTP 403
+logo  H&M (hm.com): wikidata: HTTP 429; site: HTTP 403
+logo  HUF (hufworldwide.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Hed Mayner (hedmayner.com): wikidata: HTTP 429; site: HTTP 402
+logo  Henrik Vibskov (henrikvibskov.com): wikidata: HTTP 429; site: HTTP 404
+logo  Herno (herno.com): wikidata: no Wikidata logo; site: Input buffer has corrupt header: glib: XML parse error: error code=201 (3) in (null):1:197: Namespace prefix xlink for href on use is not defined
+logo  Hugo Boss (hugoboss.com): wikidata: HTTP 429; site: logo empty
+logo  Human Made (humanmade.jp): wikidata: HTTP 429; site: HTTP 403
+logo  Iron Heart (no site): wikidata: HTTP 429
+logo  Isabel Marant (isabelmarant.com): wikidata: HTTP 429; site: looks like a photo, not a logo
+logo  Isaia (isaia.com): wikidata: HTTP 429; site: fetch failed
+logo  J.Crew (jcrew.com): wikidata: HTTP 429; site: HTTP 403
+logo  Jacquemus (jacquemus.com): wikidata: HTTP 429; site: HTTP 403
+logo  Jan-Jan Van Essche (janjanvanessche.com): wikidata: HTTP 429; site: no logo on homepage
+logo  John Smedley (johnsmedley.com): wikidata: no Wikidata logo; site: HTTP 429
+logo  Julius (no site): wikidata: HTTP 429
+logo  Junya Watanabe (no site): wikidata: HTTP 429
+logo  Juun.J (juunj.com): wikidata: not on Wikidata; site: fetch failed
+logo  Kapital (no site): wikidata: HTTP 429
+logo  Kidill (no site): wikidata: HTTP 429
+logo  Kiko Kostadinov (kikokostadinov.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Klättermusen (klattermusen.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Kolor (no site): wikidata: HTTP 429
+logo  L.L.Bean (llbean.com): wikidata: HTTP 429; site: no logo on homepage
+logo  LGN Louis Gabriel Nouchi (no site): wikidata: HTTP 429
+logo  Lacoste (lacoste.com): wikidata: HTTP 429; site: HTTP 403
+logo  Lee (lee.com): wikidata: HTTP 429; site: HTTP 403
+logo  Levi's (levi.com): wikidata: HTTP 429; site: HTTP 403
+logo  Luar (luar.world): wikidata: HTTP 429; site: looks like a photo, not a logo
+logo  Lukhanyo Mdingi (lukhanyomdingi.com): wikidata: HTTP 429; site: fetch failed
+logo  Magliano (magliano.website): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Mame Kurogouchi (no site): wikidata: HTTP 429
+logo  Mango (mango.com): wikidata: HTTP 429; site: HTTP 429
+logo  Margaret Howell (margarethowell.co.uk): wikidata: no Wikidata logo; site: Input buffer has corrupt header: svgload_buffer: bad dimensions
+logo  Massimo Alba (massimoalba.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Massimo Dutti (massimodutti.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Max Mara (maxmara.com): wikidata: HTTP 429; site: HTTP 403
+logo  Moncler (moncler.com): wikidata: HTTP 429; site: HTTP 403
+logo  Mr P. (mrporter.com): wikidata: no Wikidata logo; site: HTTP 403
+logo  Muji (muji.com): wikidata: HTTP 429; site: fetch failed
+logo  Needles (no site): wikidata: HTTP 429
+logo  Neighborhood (no site): wikidata: HTTP 429
+logo  Nigel Cabourn (nigelcabourn.com): wikidata: no Wikidata logo; site: fetch failed
+logo  Nudie Jeans (nudiejeans.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Orslow (no site): wikidata: HTTP 429
+logo  Ottolinger (ottolinger.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Our Legacy (ourlegacy.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  PT Torino (pttorino.com): wikidata: not on Wikidata; site: fetch failed
+logo  Patta (patta.nl): wikidata: no Wikidata logo; site: looks like a photo, not a logo
+logo  Paul Smith (paulsmith.com): wikidata: no Wikidata logo; site: Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 41 on line 1 column 137 of data: Specification mandates value for attribute data-v-3aa6db58
+logo  Post Archive Faction (no site): wikidata: not on Wikidata
+logo  Pure Blue Japan (no site): wikidata: HTTP 429
+logo  Rhude (rhude.com): wikidata: no Wikidata logo; site: fetch failed
+logo  Rota (no site): wikidata: no Wikidata logo
+logo  Rubinacci (marianorubinacci.net): wikidata: HTTP 429; site: fetch failed
+logo  Samsøe Samsøe (samsoe.com): wikidata: HTTP 429; site: looks like a photo, not a logo
+logo  Samuel Gui Yang (no site): wikidata: HTTP 429
+logo  Simone Rocha (simonerocha.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Soshiotsuki (no site): wikidata: HTTP 429
+logo  Spier & Mackay (spierandmackay.com): wikidata: HTTP 429; site: HTTP 403
+logo  Studio D'Artisan (no site): wikidata: HTTP 429
+logo  Supreme (supremenewyork.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Séfr (sefr-online.com): wikidata: no Wikidata logo; site: no logo on homepage
+logo  Sézane (sezane.com): wikidata: HTTP 429; site: HTTP 403
+logo  Tagliatore (tagliatore.com): wikidata: HTTP 429; site: no logo on homepage
+logo  The Anthology (no site): wikidata: HTTP 429
+logo  The Kooples (thekooples.com): wikidata: HTTP 429; site: no logo on homepage
+logo  The North Face (thenorthface.com): wikidata: looks like a photo, not a logo; site: HTTP 403
+logo  The Real McCoy's (realmccoys.co.jp): wikidata: HTTP 429; site: fetch failed
+logo  Theory (theory.com): wikidata: HTTP 429; site: HTTP 403
+logo  Thom Browne (thombrowne.com): wikidata: HTTP 429; site: logo empty
+logo  Todd Snyder (toddsnyder.com): wikidata: HTTP 429; site: HTTP 403
+logo  Toga (no site): wikidata: HTTP 429
+logo  Tom Ford (tomford.com): wikidata: HTTP 429; site: HTTP 403
+logo  Uma Wang (umawang.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Uniqlo (uniqlo.com): wikidata: HTTP 429; site: HTTP 403
+logo  Uniqlo U (uniqlo.com): wikidata: HTTP 429; site: HTTP 403
+logo  United Arrows (united-arrows.co.jp): wikidata: HTTP 429; site: HTTP 403
+logo  Valstar (valstar.it): wikidata: no Wikidata logo; site: fetch failed
+logo  Vetements (vetementswebsite.com): wikidata: HTTP 429; site: no logo on homepage
+logo  WTAPS (wtaps.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Wacko Maria (no site): wikidata: HTTP 429
+logo  Walter Van Beirendonck (no site): wikidata: HTTP 429
+logo  Willy Chavarria (willychavarria.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Wings + Horns (wingsandhorns.com): wikidata: not on Wikidata; site: fetch failed
+logo  Wrangler (wrangler.com): wikidata: HTTP 429; site: HTTP 403
+logo  YMC (youmustcreate.com): wikidata: no Wikidata logo; site: Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 76 on line 34 column 11 of data: Opening and ending tag mismatch: svg line 1 and g
+logo  Yohji Yamamoto (yohjiyamamoto.co.jp): wikidata: HTTP 429; site: fetch failed
+logo  Zanone (no site): wikidata: no Wikidata logo
+logo  Zara (zara.com): wikidata: HTTP 429; site: no logo on homepage
+logo  Zegna (zegna.com): wikidata: HTTP 429; site: HTTP 403
+logo  Ziggy Chen (no site): wikidata: HTTP 429
