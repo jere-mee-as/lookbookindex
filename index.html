@@ -66,7 +66,16 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
 .tb { font-weight: 600; text-transform: uppercase; }
 
 /* brands */
-.letters { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 0 0 18px; border-bottom: 1px solid var(--hair); margin-bottom: 4px; }
+.bar2 { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 32px; padding: 0 0 18px; border-bottom: 1px solid var(--hair); margin-bottom: 4px; }
+.letters { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.sort { display: flex; gap: 14px; white-space: nowrap; }
+.sort span { color: var(--muted); }
+.sort button { all: unset; cursor: pointer; color: var(--muted); }
+.sort button:hover { color: var(--ink); }
+.sort button[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+.sort button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+.grp.wide { flex-direction: column; gap: 0; }
+.grp.wide h2 { width: auto; padding: 28px 0 6px; }
 .letters a.off { color: var(--faint); pointer-events: none; }
 .split { display: flex; gap: 40px; align-items: flex-start; }
 .list { flex: 1 1 auto; min-width: 0; }
@@ -137,7 +146,10 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
       <div class="grid" id="grid"></div>
     </section>
     <section id="v-brands" hidden>
-      <nav class="letters" id="letters" aria-label="Jump to letter"></nav>
+      <div class="bar2">
+        <nav class="letters" id="letters" aria-label="Jump to"></nav>
+        <div class="sort" role="group" aria-label="Sort"><span>SORT</span><button type="button" data-s="az">A–Z</button><button type="button" data-s="region">REGION</button><button type="button" data-s="price">PRICE</button></div>
+      </div>
       <div class="split">
         <div class="list" id="list"></div>
         <aside class="card" id="card" aria-live="polite"></aside>
@@ -155,6 +167,8 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
   const CATS = ["Luxury house","Designer","Tailoring","Contemporary","Streetwear","Heritage & workwear","Outdoor & technical","Denim","Minimal","Avant-garde","Knitwear","High street & basics"];
   const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const TIER = ["", "High street", "Premium", "Designer", "Luxury"];
+  const REGION = { "France":"Europe","Italy":"Europe","United Kingdom":"Europe","Spain":"Europe","Germany":"Europe","Belgium":"Europe","Netherlands":"Europe","Sweden":"Europe","Denmark":"Europe","Norway":"Europe","Switzerland":"Europe","Japan":"Asia","South Korea":"Asia","China":"Asia","Hong Kong":"Asia","India":"Asia","United States":"North America","Canada":"North America","Mexico":"Latin America","Brazil":"Latin America","Argentina":"Latin America","Colombia":"Latin America","Nigeria":"Africa","South Africa":"Africa","Australia":"Oceania" };
+  const REGIONS = ["Europe", "North America", "Asia", "Latin America", "Africa", "Oceania"];
   const ELSEWHERE = [
     ["Runway", [["Vogue Runway","Every show, every season","https://www.vogue.com/fashion-shows"],["Tagwalk","Search runways by item","https://www.tag-walk.com/en/"],["NOWFASHION","Live show coverage","https://nowfashion.com/"]]],
     ["Shop", [["SSENSE","Designer menswear","https://www.ssense.com/en-us/men"],["Mr Porter","Luxury menswear","https://www.mrporter.com/en-us/"]]],
@@ -167,14 +181,15 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
   const key = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "");
   const httpsUrl = (u) => (typeof u === "string" && /^https:\/\//i.test(u)) ? u : null;
   const ext = (href, txt) => { const a = el("a", null, txt); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
-  const okCover = (c) => typeof c === "string" && /^covers\/[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(c);
+  const okCover = (c) => typeof c === "string" && /^covers\/(brands\/)?[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(c);
   const pd = (d) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ""); return m ? { y: +m[1], m: +m[2] - 1, d: +m[3] } : null; };
   const t = (x) => { const p = pd(x.date); return p ? Date.UTC(p.y, p.m, p.d) : 0; };
   const when = (x) => { const p = pd(x.date); if (!p) return ""; return x.approx ? MON[p.m] + " " + p.y : p.d + " " + MON[p.m]; };
   const letterOf = (n) => { const k = n.normalize("NFD").replace(/[̀-ͯ]/g, "")[0].toUpperCase(); return /[A-Z]/.test(k) ? k : "#"; };
 
   let brands = [], drops = [], byKey = new Map(), latest = new Map();
-  const st = { view: "just", cat: "", q: "", sel: null };
+  let saved = null; try { saved = localStorage.getItem("lbi-sort"); } catch (e) {}
+  const st = { view: "just", cat: "", q: "", sel: null, sort: ["az", "region", "price"].includes(saved) ? saved : "az" };
 
   function pic(cover, name) {
     const d = el("div", "pic");
@@ -215,7 +230,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
       const a = el(u ? "a" : "div", "tile");
       if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; }
       const nm = x.kind === "Collab" && /×/.test(x.title || "") ? x.title.split(":")[0].trim() : x.brand;
-      a.append(pic(x.cover, nm), el("span", "tb", nm));
+      a.append(pic(x.cover || b.img, nm), el("span", "tb", nm));
       if (b.s) a.append(el("span", "mu", b.s));
       a.append(el("span", "mu", [x.season, when(x)].filter(Boolean).join(" · ")));
       g.append(a);
@@ -251,7 +266,7 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
     const b = st.sel && brands.find((x) => x.n === st.sel);
     if (!b) return;
     const lt = latest.get(key(b.n));
-    c.append(pic(lt && lt.cover, b.n), el("span", "cn", b.n), el("span", "mu", b.s || ""));
+    c.append(pic((lt && lt.cover) || b.img, b.n), el("span", "cn", b.n), el("span", "mu", b.s || ""));
     details(b, c);
   }
   function select(n, rerender) {
@@ -265,24 +280,31 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
   function renderBrands() {
     const L = $("#list"); L.replaceChildren();
     const r = shown().sort((a, b) => a.n.localeCompare(b.n));
-    const groups = new Map();
-    r.forEach((b) => { const k = letterOf(b.n); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(b); });
+    const az = st.sort === "az";
+    const groupOf = st.sort === "region" ? (b) => REGION[b.c] || "Elsewhere" : st.sort === "price" ? (b) => TIER[b.p] || "Unpriced" : (b) => letterOf(b.n);
+    const order = st.sort === "region" ? REGIONS : st.sort === "price" ? [4, 3, 2, 1].map((p) => TIER[p]) : ["#"].concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
+    const groups = new Map(order.map((k) => [k, []]));
+    r.forEach((b) => { const k = groupOf(b); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(b); });
+    const ids = new Map([...groups.keys()].map((k, i) => [k, "G-" + i]));
+    const label = (k) => az ? k : k.toUpperCase();
     const lt = $("#letters"); lt.replaceChildren();
-    ["#"].concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")).forEach((ch) => {
-      const a = el("a", groups.has(ch) ? null : "off", ch); a.href = "#brands";
-      if (groups.has(ch)) a.onclick = (e) => { e.preventDefault(); document.getElementById("L-" + ch).scrollIntoView({ block: "start" }); };
+    for (const [k, list] of groups) {
+      if (!az && !list.length) continue;
+      const a = el("a", list.length ? null : "off", label(k)); a.href = "#brands";
+      if (list.length) a.onclick = (e) => { e.preventDefault(); document.getElementById(ids.get(k)).scrollIntoView({ block: "start" }); };
       else { a.setAttribute("aria-disabled", "true"); a.tabIndex = -1; }
       lt.append(a);
-    });
+    }
+    document.querySelectorAll(".sort button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.s === st.sort)));
     if (!r.length) { L.append(el("p", "empty", "No brands match.")); $("#card").replaceChildren(); return; }
     for (const [k, list] of groups) {
-      const sec = el("section", "grp"); sec.id = "L-" + k;
-      sec.append(el("h2", null, k));
+      if (!list.length) continue;
+      const sec = el("section", az ? "grp" : "grp wide"); sec.id = ids.get(k);
+      sec.append(el("h2", null, label(k)));
       const rows = el("div", "rows");
       for (const b of list) {
         const row = el("button", "row"); row.type = "button"; row.dataset.n = b.n; row.setAttribute("aria-expanded", "false");
         row.append(el("span", "n", b.n), el("span", "s", b.s || ""), el("span", "o", b.c));
-        row.onmouseenter = () => { if (matchMedia("(min-width: 1101px)").matches) select(b.n); };
         row.onclick = () => { if (st.sel === b.n && !matchMedia("(min-width: 1101px)").matches) { st.sel = null; select(null, true); } else select(b.n, true); };
         rows.append(row);
       }
@@ -291,6 +313,11 @@ button, input { font: inherit; color: inherit; letter-spacing: inherit; }
     if (!st.sel || !r.some((b) => b.n === st.sel)) st.sel = matchMedia("(min-width: 1101px)").matches ? r[0].n : null;
     select(st.sel, true);
   }
+
+  document.querySelectorAll(".sort button").forEach((b) => { b.onclick = () => {
+    st.sort = b.dataset.s; try { localStorage.setItem("lbi-sort", st.sort); } catch (e) {}
+    renderBrands(); $("#v-brands").scrollIntoView({ block: "start" }); scrollTo(0, 0);
+  }; });
 
   // ---------- elsewhere ----------
   function renderElsewhere() {
