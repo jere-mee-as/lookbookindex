@@ -88,6 +88,22 @@ async function wikidataLogo(b) {
   return get("https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(fileName), "buf", BOT);
 }
 
+async function wikipediaLogo(b) {
+  const norm = (x) => slug(x).replace(/-/g, "");
+  const s = await get("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srlimit=4&srsearch=" + encodeURIComponent(b.n + " fashion brand"), "json", BOT);
+  for (const hit of (s.query && s.query.search) || []) {
+    const p = await get("https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=wikitext&page=" + encodeURIComponent(hit.title), "json", BOT);
+    const wt = (p.parse && p.parse.wikitext && p.parse.wikitext["*"]) || "";
+    const m = /\|\s*logo\s*=\s*(?:\[\[)?(?:File:|Image:)?\s*([^|\]\n{}]+?\.(?:svg|png|jpe?g|gif))/i.exec(wt);
+    if (!m) continue;
+    const titleOk = norm(hit.title).includes(norm(b.n));
+    const siteOk = b.u && wt.toLowerCase().includes(b.u.toLowerCase().replace(/^www\./, ""));
+    if (!titleOk && !siteOk) continue;
+    return get("https://en.wikipedia.org/wiki/Special:FilePath/" + encodeURIComponent(m[1].trim()), "buf", BOT);
+  }
+  throw new Error("no Wikipedia logo");
+}
+
 function logoCandidates(html, base) {
   const out = [];
   const header = (/<header\b[\s\S]*?<\/header>/i.exec(html) || [html])[0];
@@ -162,6 +178,7 @@ await pool(brands.filter((b) => !b.logo && b.logoAuto !== false), 4, async (b) =
   const rel = "covers/logos/" + slug(b.n) + ".webp";
   const why = [];
   try { b.la = await saveLogo(await wikidataLogo(b), rel); b.logo = rel; got++; return; } catch (e) { why.push("wikidata: " + e.message); }
+  try { b.la = await saveLogo(await wikipediaLogo(b), rel); b.logo = rel; got++; return; } catch (e) { why.push("wikipedia: " + e.message); }
   if (b.u) { try { b.la = await homepageLogo(b, rel); b.logo = rel; got++; return; } catch (e) { why.push("site: " + e.message); } }
   misses.push(`logo  ${b.n} (${b.u || "no site"}): ${why.join("; ")}`);
 });
