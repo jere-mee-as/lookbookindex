@@ -37,7 +37,8 @@ async function grab(page, file) {
   const buf = await get(img, false);
   const meta = await sharp(buf).metadata();
   if ((meta.width || 0) < 400 || (meta.height || 0) < 300) throw new Error("image too small (likely a logo)");
-  await sharp(buf).rotate().resize({ width: 900, withoutEnlargement: true }).webp({ quality: 78 }).toFile(file);
+  const out = await sharp(buf).rotate().resize({ width: 900, withoutEnlargement: true }).webp({ quality: 78 }).toFile(file);
+  return Math.round((out.width / out.height) * 100) / 100; // aspect ratio; wide images (> 1.25) are shown whole, not cropped
 }
 
 async function pool(items, n, fn) {
@@ -55,12 +56,12 @@ let got = 0;
 
 await pool(drops.filter((d) => !d.cover && /^https:\/\//.test(d.url || "")), 4, async (d) => {
   const rel = "covers/" + slug(d.id || d.brand + "-" + d.date) + ".webp";
-  try { await grab(d.url, rel); d.cover = rel; got++; } catch (e) { misses.push(`drop  ${d.brand}: ${e.message}`); }
+  try { d.ia = await grab(d.url, rel); d.cover = rel; got++; } catch (e) { misses.push(`drop  ${d.brand}: ${e.message}`); }
 });
 
 await pool(brands.filter((b) => !b.img && b.u), 6, async (b) => {
   const rel = "covers/brands/" + slug(b.n) + ".webp";
-  try { await grab("https://" + b.u, rel); b.img = rel; got++; } catch (e) { misses.push(`brand ${b.n}: ${e.message}`); }
+  try { b.ia = await grab("https://" + b.u, rel); b.img = rel; got++; } catch (e) { misses.push(`brand ${b.n}: ${e.message}`); }
 });
 
 await fs.writeFile("drops.json", JSON.stringify(drops, null, 2) + "\n");

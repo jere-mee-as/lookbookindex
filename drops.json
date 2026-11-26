@@ -34,7 +34,8 @@
     "summary": "Lightweight, versatile pieces with refined tailoring and quiet styling, led by Swaim Hutson.",
     "url": "https://www.otsmagazine.com/2026/11/rag-bone.html",
     "source": "OTS Magazine",
-    "cover": "covers/rag-bone-prefall-2027-men.webp"
+    "cover": "covers/rag-bone-prefall-2027-men.webp",
+    "ia": 0.67
   },
   {
     "id": "tom-ford-resort-2027-men",
@@ -47,7 +48,8 @@
     "summary": "",
     "url": "https://theimpression.com/tom-ford-resort-2027-mens-fashion-show/",
     "source": "The Impression",
-    "cover": "covers/tom-ford-resort-2027-men.webp"
+    "cover": "covers/tom-ford-resort-2027-men.webp",
+    "ia": 0.67
   },
   {
     "id": "givenchy-ss27-men",
@@ -60,7 +62,8 @@
     "summary": "",
     "url": "https://theimpression.com/givenchy-spring-2027-menswear-fashion-show/",
     "source": "The Impression",
-    "cover": "covers/givenchy-ss27-men.webp"
+    "cover": "covers/givenchy-ss27-men.webp",
+    "ia": 0.75
   },
   {
     "id": "balmain-resort-2027-men",
@@ -73,7 +76,8 @@
     "summary": "",
     "url": "https://theimpression.com/balmain-resort-2027-mens-fashion-show/",
     "source": "The Impression",
-    "cover": "covers/balmain-resort-2027-men.webp"
+    "cover": "covers/balmain-resort-2027-men.webp",
+    "ia": 0.75
   },
   {
     "id": "john-elliott-ss27",
@@ -86,7 +90,8 @@
     "summary": "",
     "url": "https://theimpression.com/john-elliott-spring-2027-mens-fashion-show/",
     "source": "The Impression",
-    "cover": "covers/john-elliott-ss27.webp"
+    "cover": "covers/john-elliott-ss27.webp",
+    "ia": 0.67
   },
   {
     "id": "kith-winter-2026",
@@ -99,7 +104,8 @@
     "summary": "Outerwear, knitwear and accessories, a debut partnership with Seven by Seven, and footwear with Timberland, adidas Originals and Clarks.",
     "url": "https://kith.com/blogs/discover/kith-winter-2026-lookbook",
     "source": "Kith",
-    "cover": "covers/kith-winter-2026.webp"
+    "cover": "covers/kith-winter-2026.webp",
+    "ia": 0.75
   },
   {
     "id": "loro-piana-ss27",
@@ -112,7 +118,8 @@
     "summary": "",
     "url": "https://theimpression.com/loro-piana-spring-2027-mens-fashion-show/",
     "source": "The Impression",
-    "cover": "covers/loro-piana-ss27.webp"
+    "cover": "covers/loro-piana-ss27.webp",
+    "ia": 0.67
   },
   {
     "id": "noah-fw26",
@@ -125,7 +132,8 @@
     "summary": "Wearable, thoughtfully styled menswear; Highsnobiety on how Noah has stayed relevant for a decade.",
     "url": "https://www.highsnobiety.com/p/noah-clothing-fw26/",
     "source": "Highsnobiety",
-    "cover": "covers/noah-fw26.webp"
+    "cover": "covers/noah-fw26.webp",
+    "ia": 1.5
   },
   {
     "id": "louis-vuitton-ss27-formal",
