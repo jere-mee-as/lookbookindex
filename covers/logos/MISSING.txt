@@ -1,138 +1,134 @@
-logo  & Other Stories (stories.com): wikidata: HTTP 429; site: HTTP 403
-logo  Acronym (acrnm.com): wikidata: no Wikidata logo; site: HTTP 403
-logo  Ader Error (adererror.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Akris (akris.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Alexander McQueen (alexandermcqueen.com): wikidata: HTTP 429; site: HTTP 403
-logo  Ami Paris (amiparis.com): wikidata: HTTP 429; site: Input buffer has corrupt header: glib: XML parse error: Error domain 3 code 201 on line 10 column 49 of data: Namespace prefix xlink for href on use is not defined
-logo  Anderson & Sheppard (anderson-sheppard.co.uk): wikidata: HTTP 429; site: fetch failed
-logo  Arket (arket.com): wikidata: HTTP 429; site: HTTP 403
-logo  Barba Napoli (no site): wikidata: not on Wikidata
-logo  Beams Plus (beams.co.jp): wikidata: HTTP 429; site: This operation was aborted
-logo  Bianca Saunders (no site): wikidata: no Wikidata logo
-logo  Bode (bode.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Boglioli (boglioli.com): wikidata: HTTP 429; site: fetch failed
-logo  Brioni (brioni.com): wikidata: HTTP 429; site: HTTP 403
-logo  Brooks Brothers (brooksbrothers.com): wikidata: HTTP 429; site: HTTP 403
-logo  Brunello Cucinelli (brunellocucinelli.com): wikidata: no Wikidata logo; site: fetch failed
-logo  COS (cos.com): wikidata: HTTP 429; site: HTTP 403
-logo  Cactus Plant Flea Market (cactusplantfleamarket.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Carhartt WIP (carhartt-wip.com): wikidata: HTTP 429; site: looks like a photo, not a logo
-logo  Casablanca (casablancaparis.com): wikidata: HTTP 429; site: logo too small
-logo  Children of the Discordance (no site): wikidata: HTTP 429
-logo  Club Monaco (clubmonaco.com): wikidata: HTTP 429; site: HTTP 403
-logo  Comme des Garçons (comme-des-garcons.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Comoli (no site): wikidata: no Wikidata logo
-logo  Connor McKnight (no site): wikidata: HTTP 429
-logo  Corteiz (no site): wikidata: no Wikidata logo
-logo  Daily Paper (dailypaperclothing.com): wikidata: no Wikidata logo; site: HTTP 403
-logo  De Petrillo (no site): wikidata: HTTP 429
-logo  Dingyun Zhang (no site): wikidata: HTTP 429
-logo  District Vision (districtvision.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Doublet (no site): wikidata: HTTP 429
-logo  Eckhaus Latta (eckhauslatta.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Egonlab (no site): wikidata: HTTP 429
-logo  Eleventy (eleventy.it): wikidata: no Wikidata logo; site: fetch failed
-logo  Engineered Garments (engineeredgarments.com): wikidata: HTTP 429; site: looks like a photo, not a logo
-logo  Ernest W. Baker (ernestwbaker.com): wikidata: HTTP 429; site: fetch failed
-logo  Facetasm (no site): wikidata: HTTP 429
-logo  Federico Cina (no site): wikidata: no Wikidata logo
-logo  Feng Chen Wang (fengchenwang.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Filippa K (filippa-k.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Frame (frame-store.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Fred Perry (fredperry.com): wikidata: no Wikidata logo; site: HTTP 403
-logo  Fullcount (no site): wikidata: HTTP 429
-logo  Gitman Vintage (gitmanvintage.com): wikidata: HTTP 429; site: no logo on homepage
-logo  GmbH (no site): wikidata: HTTP 429
-logo  Goldwin (goldwin.co.jp): wikidata: HTTP 429; site: HTTP 403
-logo  Gran Sasso (gransasso.it): wikidata: no Wikidata logo; site: HTTP 403
-logo  H&M (hm.com): wikidata: HTTP 429; site: HTTP 403
-logo  HUF (hufworldwide.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Hed Mayner (hedmayner.com): wikidata: HTTP 429; site: HTTP 402
-logo  Henrik Vibskov (henrikvibskov.com): wikidata: HTTP 429; site: HTTP 404
-logo  Herno (herno.com): wikidata: no Wikidata logo; site: Input buffer has corrupt header: glib: XML parse error: error code=201 (3) in (null):1:197: Namespace prefix xlink for href on use is not defined
-logo  Hugo Boss (hugoboss.com): wikidata: HTTP 429; site: logo empty
-logo  Human Made (humanmade.jp): wikidata: HTTP 429; site: HTTP 403
-logo  Iron Heart (no site): wikidata: HTTP 429
-logo  Isabel Marant (isabelmarant.com): wikidata: HTTP 429; site: looks like a photo, not a logo
-logo  Isaia (isaia.com): wikidata: HTTP 429; site: fetch failed
-logo  J.Crew (jcrew.com): wikidata: HTTP 429; site: HTTP 403
-logo  Jacquemus (jacquemus.com): wikidata: HTTP 429; site: HTTP 403
-logo  Jan-Jan Van Essche (janjanvanessche.com): wikidata: HTTP 429; site: no logo on homepage
-logo  John Smedley (johnsmedley.com): wikidata: no Wikidata logo; site: HTTP 429
-logo  Julius (no site): wikidata: HTTP 429
-logo  Junya Watanabe (no site): wikidata: HTTP 429
-logo  Juun.J (juunj.com): wikidata: not on Wikidata; site: fetch failed
-logo  Kapital (no site): wikidata: HTTP 429
-logo  Kidill (no site): wikidata: HTTP 429
-logo  Kiko Kostadinov (kikokostadinov.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Klättermusen (klattermusen.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Kolor (no site): wikidata: HTTP 429
-logo  L.L.Bean (llbean.com): wikidata: HTTP 429; site: no logo on homepage
-logo  LGN Louis Gabriel Nouchi (no site): wikidata: HTTP 429
-logo  Lacoste (lacoste.com): wikidata: HTTP 429; site: HTTP 403
-logo  Lee (lee.com): wikidata: HTTP 429; site: HTTP 403
-logo  Levi's (levi.com): wikidata: HTTP 429; site: HTTP 403
-logo  Luar (luar.world): wikidata: HTTP 429; site: looks like a photo, not a logo
-logo  Lukhanyo Mdingi (lukhanyomdingi.com): wikidata: HTTP 429; site: fetch failed
-logo  Magliano (magliano.website): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Mame Kurogouchi (no site): wikidata: HTTP 429
-logo  Mango (mango.com): wikidata: HTTP 429; site: HTTP 429
-logo  Margaret Howell (margarethowell.co.uk): wikidata: no Wikidata logo; site: Input buffer has corrupt header: svgload_buffer: bad dimensions
-logo  Massimo Alba (massimoalba.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Massimo Dutti (massimodutti.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Max Mara (maxmara.com): wikidata: HTTP 429; site: HTTP 403
-logo  Moncler (moncler.com): wikidata: HTTP 429; site: HTTP 403
-logo  Mr P. (mrporter.com): wikidata: no Wikidata logo; site: HTTP 403
-logo  Muji (muji.com): wikidata: HTTP 429; site: fetch failed
-logo  Needles (no site): wikidata: HTTP 429
-logo  Neighborhood (no site): wikidata: HTTP 429
-logo  Nigel Cabourn (nigelcabourn.com): wikidata: no Wikidata logo; site: fetch failed
-logo  Nudie Jeans (nudiejeans.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Orslow (no site): wikidata: HTTP 429
-logo  Ottolinger (ottolinger.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Our Legacy (ourlegacy.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  PT Torino (pttorino.com): wikidata: not on Wikidata; site: fetch failed
-logo  Patta (patta.nl): wikidata: no Wikidata logo; site: looks like a photo, not a logo
-logo  Paul Smith (paulsmith.com): wikidata: no Wikidata logo; site: Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 41 on line 1 column 137 of data: Specification mandates value for attribute data-v-3aa6db58
-logo  Post Archive Faction (no site): wikidata: not on Wikidata
-logo  Pure Blue Japan (no site): wikidata: HTTP 429
-logo  Rhude (rhude.com): wikidata: no Wikidata logo; site: fetch failed
-logo  Rota (no site): wikidata: no Wikidata logo
-logo  Rubinacci (marianorubinacci.net): wikidata: HTTP 429; site: fetch failed
-logo  Samsøe Samsøe (samsoe.com): wikidata: HTTP 429; site: looks like a photo, not a logo
-logo  Samuel Gui Yang (no site): wikidata: HTTP 429
-logo  Simone Rocha (simonerocha.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Soshiotsuki (no site): wikidata: HTTP 429
-logo  Spier & Mackay (spierandmackay.com): wikidata: HTTP 429; site: HTTP 403
-logo  Studio D'Artisan (no site): wikidata: HTTP 429
-logo  Supreme (supremenewyork.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Séfr (sefr-online.com): wikidata: no Wikidata logo; site: no logo on homepage
-logo  Sézane (sezane.com): wikidata: HTTP 429; site: HTTP 403
-logo  Tagliatore (tagliatore.com): wikidata: HTTP 429; site: no logo on homepage
-logo  The Anthology (no site): wikidata: HTTP 429
-logo  The Kooples (thekooples.com): wikidata: HTTP 429; site: no logo on homepage
-logo  The North Face (thenorthface.com): wikidata: looks like a photo, not a logo; site: HTTP 403
-logo  The Real McCoy's (realmccoys.co.jp): wikidata: HTTP 429; site: fetch failed
-logo  Theory (theory.com): wikidata: HTTP 429; site: HTTP 403
-logo  Thom Browne (thombrowne.com): wikidata: HTTP 429; site: logo empty
-logo  Todd Snyder (toddsnyder.com): wikidata: HTTP 429; site: HTTP 403
-logo  Toga (no site): wikidata: HTTP 429
-logo  Tom Ford (tomford.com): wikidata: HTTP 429; site: HTTP 403
-logo  Uma Wang (umawang.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Uniqlo (uniqlo.com): wikidata: HTTP 429; site: HTTP 403
-logo  Uniqlo U (uniqlo.com): wikidata: HTTP 429; site: HTTP 403
-logo  United Arrows (united-arrows.co.jp): wikidata: HTTP 429; site: HTTP 403
-logo  Valstar (valstar.it): wikidata: no Wikidata logo; site: fetch failed
-logo  Vetements (vetementswebsite.com): wikidata: HTTP 429; site: no logo on homepage
-logo  WTAPS (wtaps.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Wacko Maria (no site): wikidata: HTTP 429
-logo  Walter Van Beirendonck (no site): wikidata: HTTP 429
-logo  Willy Chavarria (willychavarria.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Wings + Horns (wingsandhorns.com): wikidata: not on Wikidata; site: fetch failed
-logo  Wrangler (wrangler.com): wikidata: HTTP 429; site: HTTP 403
-logo  YMC (youmustcreate.com): wikidata: no Wikidata logo; site: Input buffer has corrupt header: glib: XML parse error: Error domain 1 code 76 on line 34 column 11 of data: Opening and ending tag mismatch: svg line 1 and g
-logo  Yohji Yamamoto (yohjiyamamoto.co.jp): wikidata: HTTP 429; site: fetch failed
-logo  Zanone (no site): wikidata: no Wikidata logo
-logo  Zara (zara.com): wikidata: HTTP 429; site: no logo on homepage
-logo  Zegna (zegna.com): wikidata: HTTP 429; site: HTTP 403
-logo  Ziggy Chen (no site): wikidata: HTTP 429
+Brunello Cucinelli  →  save as brunello-cucinelli  ·  https://brunellocucinelli.com
+Isaia  →  save as isaia  ·  https://isaia.com
+Boglioli  →  save as boglioli  ·  https://boglioli.com
+Tagliatore  →  save as tagliatore  ·  https://tagliatore.com
+De Petrillo  →  save as de-petrillo  ·  https://
+The Anthology  →  save as the-anthology  ·  https://
+Anderson & Sheppard  →  save as anderson-sheppard  ·  https://anderson-sheppard.co.uk
+Spier & Mackay  →  save as spier-mackay  ·  https://spierandmackay.com
+Thom Browne  →  save as thom-browne  ·  https://thombrowne.com
+Barba Napoli  →  save as barba-napoli  ·  https://
+Incotex  →  save as incotex  ·  https://incotex.com
+PT Torino  →  save as pt-torino  ·  https://pttorino.com
+Rota  →  save as rota  ·  https://
+Massimo Alba  →  save as massimo-alba  ·  https://massimoalba.com
+Herno  →  save as herno  ·  https://herno.com
+Valstar  →  save as valstar  ·  https://valstar.it
+Eleventy  →  save as eleventy  ·  https://eleventy.it
+Gran Sasso  →  save as gran-sasso  ·  https://gransasso.it
+Zanone  →  save as zanone  ·  https://
+Sunnei  →  save as sunnei  ·  https://sunnei.it
+Magliano  →  save as magliano  ·  https://magliano.website
+Federico Cina  →  save as federico-cina  ·  https://
+Margaret Howell  →  save as margaret-howell  ·  https://margarethowell.co.uk
+Comoli  →  save as comoli  ·  https://
+Totême  →  save as toteme  ·  https://toteme-studio.com
+Our Legacy  →  save as our-legacy  ·  https://ourlegacy.com
+Filippa K  →  save as filippa-k  ·  https://filippa-k.com
+Séfr  →  save as sefr  ·  https://sefr-online.com
+Ganni  →  save as ganni  ·  https://ganni.com
+Henrik Vibskov  →  save as henrik-vibskov  ·  https://henrikvibskov.com
+Holzweiler  →  save as holzweiler  ·  https://holzweiler.com
+Klättermusen  →  save as klattermusen  ·  https://klattermusen.com
+Polar Skate Co.  →  save as polar-skate-co  ·  https://polarskateco.com
+Nudie Jeans  →  save as nudie-jeans  ·  https://nudiejeans.com
+& Other Stories  →  save as other-stories  ·  https://stories.com
+COS  →  save as cos  ·  https://cos.com
+Issey Miyake  →  save as issey-miyake  ·  https://isseymiyake.com
+Homme Plissé Issey Miyake  →  save as homme-plisse-issey-miyake  ·  https://isseymiyake.com
+Kolor  →  save as kolor  ·  https://
+Facetasm  →  save as facetasm  ·  https://
+Toga  →  save as toga  ·  https://
+Doublet  →  save as doublet  ·  https://
+Children of the Discordance  →  save as children-of-the-discordance  ·  https://
+Soshiotsuki  →  save as soshiotsuki  ·  https://
+Kidill  →  save as kidill  ·  https://
+Mame Kurogouchi  →  save as mame-kurogouchi  ·  https://
+Julius  →  save as julius  ·  https://
+Visvim  →  save as visvim  ·  https://visvim.tv
+Kapital  →  save as kapital  ·  https://
+Needles  →  save as needles  ·  https://
+Engineered Garments  →  save as engineered-garments  ·  https://engineeredgarments.com
+Goldwin  →  save as goldwin  ·  https://goldwin.co.jp
+Beams Plus  →  save as beams-plus  ·  https://beams.co.jp
+United Arrows  →  save as united-arrows  ·  https://united-arrows.co.jp
+Orslow  →  save as orslow  ·  https://
+Pure Blue Japan  →  save as pure-blue-japan  ·  https://
+Fullcount  →  save as fullcount  ·  https://
+Studio D'Artisan  →  save as studio-d-artisan  ·  https://
+Iron Heart  →  save as iron-heart  ·  https://
+The Real McCoy's  →  save as the-real-mccoy-s  ·  https://realmccoys.co.jp
+Wacko Maria  →  save as wacko-maria  ·  https://
+Neighborhood  →  save as neighborhood  ·  https://
+Human Made  →  save as human-made  ·  https://humanmade.jp
+WTAPS  →  save as wtaps  ·  https://wtaps.com
+Uniqlo U  →  save as uniqlo-u  ·  https://uniqlo.com
+Junya Watanabe  →  save as junya-watanabe  ·  https://
+Hed Mayner  →  save as hed-mayner  ·  https://hedmayner.com
+Walter Van Beirendonck  →  save as walter-van-beirendonck  ·  https://
+Jan-Jan Van Essche  →  save as jan-jan-van-essche  ·  https://janjanvanessche.com
+Acronym  →  save as acronym  ·  https://acrnm.com
+Veilance  →  save as veilance  ·  https://veilance.com
+The North Face  →  save as the-north-face  ·  https://thenorthface.com
+District Vision  →  save as district-vision  ·  https://districtvision.com
+Post Archive Faction  →  save as post-archive-faction  ·  https://
+Juun.J  →  save as juun-j  ·  https://juunj.com
+Ader Error  →  save as ader-error  ·  https://adererror.com
+Craig Green  →  save as craig-green  ·  https://craig-green.com
+Simone Rocha  →  save as simone-rocha  ·  https://simonerocha.com
+Kiko Kostadinov  →  save as kiko-kostadinov  ·  https://kikokostadinov.com
+Bianca Saunders  →  save as bianca-saunders  ·  https://
+Paul Smith  →  save as paul-smith  ·  https://paulsmith.com
+John Smedley  →  save as john-smedley  ·  https://johnsmedley.com
+YMC  →  save as ymc  ·  https://youmustcreate.com
+Nigel Cabourn  →  save as nigel-cabourn  ·  https://nigelcabourn.com
+Mr P.  →  save as mr-p  ·  https://mrporter.com
+Corteiz  →  save as corteiz  ·  https://
+Fred Perry  →  save as fred-perry  ·  https://fredperry.com
+Daily Paper  →  save as daily-paper  ·  https://dailypaperclothing.com
+Patta  →  save as patta  ·  https://patta.nl
+The Kooples  →  save as the-kooples  ·  https://thekooples.com
+Courrèges  →  save as courreges  ·  https://courreges.com
+Casablanca  →  save as casablanca  ·  https://casablancaparis.com
+LGN Louis Gabriel Nouchi  →  save as lgn-louis-gabriel-nouchi  ·  https://
+Egonlab  →  save as egonlab  ·  https://
+Sézane  →  save as sezane  ·  https://sezane.com
+Hugo Boss  →  save as hugo-boss  ·  https://hugoboss.com
+Carhartt WIP  →  save as carhartt-wip  ·  https://carhartt-wip.com
+GmbH  →  save as gmbh  ·  https://
+Ottolinger  →  save as ottolinger  ·  https://ottolinger.com
+Levi's  →  save as levi-s  ·  https://levi.com
+Wrangler  →  save as wrangler  ·  https://wrangler.com
+Lee  →  save as lee  ·  https://lee.com
+L.L.Bean  →  save as l-l-bean  ·  https://llbean.com
+Gitman Vintage  →  save as gitman-vintage  ·  https://gitmanvintage.com
+Rogue Territory  →  save as rogue-territory  ·  https://rogueterritory.com
+Frame  →  save as frame  ·  https://frame-store.com
+Kith  →  save as kith  ·  https://kith.com
+Bode  →  save as bode  ·  https://bode.com
+Todd Snyder  →  save as todd-snyder  ·  https://toddsnyder.com
+J.Crew  →  save as j-crew  ·  https://jcrew.com
+Club Monaco  →  save as club-monaco  ·  https://clubmonaco.com
+Theory  →  save as theory  ·  https://theory.com
+Rag & Bone  →  save as rag-bone  ·  https://rag-bone.com
+Wings + Horns  →  save as wings-horns  ·  https://wingsandhorns.com
+John Elliott  →  save as john-elliott  ·  https://johnelliott.com
+Rhude  →  save as rhude  ·  https://rhude.com
+Cactus Plant Flea Market  →  save as cactus-plant-flea-market  ·  https://cactusplantfleamarket.com
+HUF  →  save as huf  ·  https://hufworldwide.com
+Supreme  →  save as supreme  ·  https://supremenewyork.com
+Willy Chavarria  →  save as willy-chavarria  ·  https://willychavarria.com
+Luar  →  save as luar  ·  https://luar.world
+Connor McKnight  →  save as connor-mcknight  ·  https://
+Eckhaus Latta  →  save as eckhaus-latta  ·  https://eckhauslatta.com
+Ernest W. Baker  →  save as ernest-w-baker  ·  https://ernestwbaker.com
+Ziggy Chen  →  save as ziggy-chen  ·  https://
+Uma Wang  →  save as uma-wang  ·  https://umawang.com
+Feng Chen Wang  →  save as feng-chen-wang  ·  https://fengchenwang.com
+Samuel Gui Yang  →  save as samuel-gui-yang  ·  https://
+Dingyun Zhang  →  save as dingyun-zhang  ·  https://
+Shushu/Tong  →  save as shushu-tong  ·  https://shushutong.com
+Lukhanyo Mdingi  →  save as lukhanyo-mdingi  ·  https://lukhanyomdingi.com
+Zara  →  save as zara  ·  https://zara.com
+Massimo Dutti  →  save as massimo-dutti  ·  https://massimodutti.com
+Mango  →  save as mango  ·  https://mango.com
