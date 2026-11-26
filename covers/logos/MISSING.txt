@@ -8,6 +8,8 @@ Zanone  →  save as zanone  ·  https://
 Sunnei  →  save as sunnei  ·  https://sunnei.it
 Magliano  →  save as magliano  ·  https://magliano.website
 Comoli  →  save as comoli  ·  https://
+Issey Miyake  →  save as issey-miyake  ·  https://isseymiyake.com
+Homme Plissé Issey Miyake  →  save as homme-plisse-issey-miyake  ·  https://isseymiyake.com
 Kolor  →  save as kolor  ·  https://
 Facetasm  →  save as facetasm  ·  https://
 Toga  →  save as toga  ·  https://
@@ -26,7 +28,6 @@ Uniqlo U  →  save as uniqlo-u  ·  https://uniqlo.com
 Junya Watanabe  →  save as junya-watanabe  ·  https://
 Hed Mayner  →  save as hed-mayner  ·  https://hedmayner.com
 Veilance  →  save as veilance  ·  https://veilance.com
-The North Face  →  save as the-north-face  ·  https://thenorthface.com
 Juun.J  →  save as juun-j  ·  https://juunj.com
 John Smedley  →  save as john-smedley  ·  https://johnsmedley.com
 Nigel Cabourn  →  save as nigel-cabourn  ·  https://nigelcabourn.com
