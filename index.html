@@ -4,480 +4,322 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<meta name="description" content="A running index of clothing labels and their newest lookbooks.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23000%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-family=%22Arial%22 font-weight=%22900%22 font-size=%2218%22 text-anchor=%22middle%22 fill=%22%23fff%22%3ELI%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Brands and their latest lookbooks, newest first.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%23111%22/%3E%3Ctext x=%2216%22 y=%2221%22 font-family=%22Arial%22 font-weight=%22600%22 font-size=%2212%22 letter-spacing=%221%22 text-anchor=%22middle%22 fill=%22%23fff%22%3ELI%3C/text%3E%3C/svg%3E">
 <title>Lookbook Index</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: stark text-only index. Header + date ticker; "Just in" = date rail on the left, lookbook covers on the right; "Index" = A–Z columns or a dated ledger. */
 :root {
-  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
-  --bg: #FFFFFF;
-  --ink: #000000;
-  --muted: #6B6B6B;
-  --faint: #BDBDBD;
-  --line: #000000;
-  --hair: #E4E4E4;
-  --font: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bg: #FFFFFF; --ink: #111111; --muted: #555555; --faint: #B5B5B5; --hair: #E6E6E6; --tile: #F1F0EE;
+  --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #0A0A0A; --ink: #F2F2F2; --muted: #9A9A9A; --faint: #4A4A4A; --line: #F2F2F2; --hair: #262626; color-scheme: dark; }
+  :root:not([data-theme="light"]) { --bg: #0B0B0B; --ink: #F2F2F2; --muted: #A3A3A3; --faint: #4D4D4D; --hair: #262626; --tile: #1A1A1A; color-scheme: dark; }
 }
-:root[data-theme="dark"] { --bg: #0A0A0A; --ink: #F2F2F2; --muted: #9A9A9A; --faint: #4A4A4A; --line: #F2F2F2; --hair: #262626; color-scheme: dark; }
+:root[data-theme="dark"] { --bg: #0B0B0B; --ink: #F2F2F2; --muted: #A3A3A3; --faint: #4D4D4D; --hair: #262626; --tile: #1A1A1A; color-scheme: dark; }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; }
-body {
-  background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 12px; line-height: 1.45;
-  text-transform: uppercase; letter-spacing: .02em;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 0 64px;
-}
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 12px; line-height: 1.45; letter-spacing: .02em; }
 a { color: inherit; text-decoration: none; }
-a:hover { text-decoration: line-through; }
-button, input, select { font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; }
-:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
-.wrap { max-width: 1320px; margin: 0 auto; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+button, input { font: inherit; color: inherit; letter-spacing: inherit; }
 .plain { all: unset; cursor: pointer; }
-.plain:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+.up { text-transform: uppercase; }
+.mu { color: var(--muted); }
 
-/* Header */
-.head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-top: 22px; }
-.bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding-bottom: 18px; }
-.nav { display: flex; gap: 22px; }
-.nav button { all: unset; cursor: pointer; }
-.nav button[aria-selected="true"] { text-decoration: underline; text-underline-offset: 4px; }
-.nav button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
-h1 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: .32em; white-space: nowrap; }
-.meta { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
-.ticker { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; display: flex; }
-.ticker .lead { flex: none; padding: 9px 16px 9px 0; font-weight: 800; background: var(--bg); position: relative; z-index: 1; }
-.ticker .track { display: flex; gap: 32px; padding: 9px 0; white-space: nowrap; animation: tick 60s linear infinite; }
-.ticker:hover .track { animation-play-state: paused; }
-.ticker .track button { all: unset; cursor: pointer; }
-.ticker .track b { font-weight: 700; }
-@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* header */
+.head { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--hair);
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+  padding: calc(env(safe-area-inset-top, 0px) + 22px) max(32px, env(safe-area-inset-right, 0px)) 22px max(32px, env(safe-area-inset-left, 0px)); }
+.nav { display: flex; gap: 24px; white-space: nowrap; }
+.nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.mark { font-size: 15px; font-weight: 600; letter-spacing: .24em; white-space: nowrap; margin: 0; }
+.mark a:hover { text-decoration: none; }
+.search { justify-self: end; display: flex; align-items: center; gap: 8px; }
+.search input { border: 0; border-bottom: 1px solid var(--ink); background: transparent; width: 150px; padding: 4px 0; border-radius: 0; outline: none; }
+.search input:focus-visible { border-bottom-width: 2px; padding-bottom: 3px; }
 
-/* Just in */
-.just { padding-top: 8px; }
-.day { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 28px; padding: 26px 0 30px; border-bottom: 1px solid var(--hair); }
-.day:first-child { padding-top: 22px; }
-.date { position: sticky; top: 104px; align-self: start; display: grid; gap: 2px; }
-.date .n { font-size: 84px; font-weight: 300; line-height: .85; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
-.date .n.approx { font-size: 52px; letter-spacing: -.02em; }
-.date .m { font-weight: 700; letter-spacing: .14em; margin-top: 8px; }
-.date .ago { color: var(--muted); }
-.covers { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 26px 22px; min-width: 0; }
-.cv { display: grid; gap: 9px; min-width: 0; }
-.frame { position: relative; aspect-ratio: 3 / 4; max-width: 100%; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between;
-  padding: 12px; container-type: inline-size; background: var(--bg); color: var(--ink); overflow: hidden; }
-.frame.inv { background: var(--ink); color: var(--bg); }
-.frame:hover { text-decoration: none; }
-.frame .row { display: flex; justify-content: space-between; gap: 8px; font-size: 10px; letter-spacing: .1em; }
-.frame .bn { font-weight: 900; font-stretch: 62%; line-height: .86; letter-spacing: -.01em; 
-  font-size: min(26cqi, calc(150cqi / var(--len, 8))); overflow-wrap: normal; word-break: keep-all; hyphens: none; }
-.frame .sub { font-size: 11px; font-weight: 600; letter-spacing: .06em; margin-top: 6px; text-transform: uppercase; }
-.frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.frame .shade { position: absolute; inset: auto 0 0 0; padding: 26px 12px 10px; background: linear-gradient(transparent, rgba(0,0,0,.6)); color: #fff; font-size: 10px; letter-spacing: .1em; display: flex; justify-content: space-between; }
-.cap { display: grid; gap: 2px; }
-.cap .b { font-weight: 800; font-size: 13px; }
-.cap .t { color: var(--muted); }
-.cap .src { display: flex; gap: 14px; flex-wrap: wrap; align-items: baseline; }
-.cap .src a { text-decoration: underline; text-underline-offset: 3px; }
-.cap .add { all: unset; cursor: pointer; color: var(--muted); }
-.cap .add:hover, .cap .add:focus-visible { color: var(--ink); text-decoration: underline; }
-.note { padding: 40px 0; color: var(--muted); max-width: 60ch; }
+/* body */
+.body { display: flex; flex-wrap: wrap; gap: 48px; padding: 32px max(32px, env(safe-area-inset-right, 0px)) 64px max(32px, env(safe-area-inset-left, 0px)); max-width: 1600px; margin: 0 auto; }
+.side { flex: 1 1 160px; max-width: 200px; display: flex; flex-direction: column; gap: 11px; align-self: flex-start; position: sticky; top: 90px; }
+.side button { all: unset; cursor: pointer; color: var(--muted); text-transform: uppercase; }
+.side button:hover { color: var(--ink); }
+.side button[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+.side button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+.main { flex: 999 1 560px; min-width: 0; }
+.lede { margin: 0 0 28px; color: var(--muted); }
+.empty { color: var(--muted); padding: 24px 0; }
 
-/* Index */
-.idx { padding-top: 18px; display: grid; gap: 22px; }
-.filters { display: grid; gap: 12px; }
-.cats { display: flex; gap: 6px 18px; flex-wrap: wrap; color: var(--muted); }
-.cats button { all: unset; cursor: pointer; }
-.cats button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.cats button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
-.row2 { display: flex; gap: 10px 26px; flex-wrap: wrap; align-items: center; }
-.row2 input[type="search"] { border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 6px 0; min-width: 220px; flex: 1 1 220px; max-width: 360px; border-radius: 0; }
-.row2 input::placeholder { color: var(--faint); }
-.grp { display: flex; gap: 8px; align-items: center; }
-.grp > span { color: var(--muted); }
-.grp select { border: 0; background: transparent; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; max-width: 100%; }
-.grp button { all: unset; cursor: pointer; color: var(--muted); }
-.grp button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
-.grp button:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
-.count { color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
-.count button { all: unset; cursor: pointer; text-decoration: underline; }
-.count button[hidden] { display: none; }
+/* just in */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 44px 20px; }
+.tile { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tile:hover { text-decoration: none; }
+.tile:hover .tb { text-decoration: underline; text-underline-offset: 4px; }
+.pic { position: relative; aspect-ratio: 3 / 4; background: var(--tile); margin-bottom: 12px; overflow: hidden; display: grid; place-items: center; }
+.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: filter .45s ease; }
+.tile:hover .pic img, .tile:focus-visible .pic img, .row:hover .pic img { filter: none; }
+.pic .ph { font-weight: 600; letter-spacing: .2em; text-transform: uppercase; text-align: center; padding: 16px; color: var(--muted); }
+.tb { font-weight: 600; text-transform: uppercase; }
 
-.cols { column-count: 4; column-gap: 32px; }
-.letter { break-inside: avoid; margin-bottom: 18px; }
-.letter .L { font-size: 44px; font-weight: 300; line-height: 1; margin-bottom: 6px; }
-.entry { display: block; font-size: 13px; font-weight: 600; line-height: 1.55; text-align: left; }
-.entry sup { font-size: 8px; font-weight: 400; color: var(--muted); margin-left: 4px; letter-spacing: .06em; }
-.entry .d { font-size: 8px; font-weight: 700; background: var(--ink); color: var(--bg); padding: 0 3px; margin-left: 4px; vertical-align: super; letter-spacing: .06em; }
+/* brands */
+.letters { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 0 0 18px; border-bottom: 1px solid var(--hair); margin-bottom: 4px; }
+.letters a.off { color: var(--faint); pointer-events: none; }
+.split { display: flex; gap: 40px; align-items: flex-start; }
+.list { flex: 1 1 auto; min-width: 0; }
+.grp { display: flex; gap: 24px; border-bottom: 1px solid var(--hair); scroll-margin-top: 96px; }
+.grp h2 { margin: 0; padding: 14px 0; width: 28px; flex: none; font-size: 12px; font-weight: 600; }
+.grp .rows { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.row { all: unset; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, .7fr); gap: 16px; padding: 13px 0; }
+.row:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+.row .n { font-weight: 600; text-transform: uppercase; }
+.row[aria-expanded="true"] .n, .row:hover .n { text-decoration: underline; text-underline-offset: 4px; }
+.row .s, .row .o { color: var(--muted); }
+.card { flex: 0 0 340px; position: sticky; top: 90px; display: flex; flex-direction: column; gap: 6px; }
+.card .pic { margin-bottom: 14px; }
+.card .cn { font-weight: 600; text-transform: uppercase; font-size: 13px; }
+.facts { margin: 10px 0 0; display: grid; grid-template-columns: 84px 1fr; gap: 6px 12px; }
+.facts dt { color: var(--muted); text-transform: uppercase; }
+.facts dd { margin: 0; }
+.out { display: flex; flex-direction: column; margin-top: 14px; border-top: 1px solid var(--hair); }
+.out a { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--hair); text-transform: uppercase; }
+.inl { display: none; }
 
-.ledger { width: 100%; border-collapse: collapse; }
-.ledger-wrap { overflow-x: auto; }
-.ledger th { text-align: left; font-weight: 400; color: var(--muted); padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.ledger td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--hair); vertical-align: baseline; }
-.ledger td.dt { width: 110px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.ledger td.br { font-size: 13px; font-weight: 700; }
-.ledger td.mu { color: var(--muted); white-space: nowrap; }
-.ledger tr.sep td { padding-top: 26px; color: var(--muted); border-bottom: 1px solid var(--line); }
+/* elsewhere */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px 32px; padding-top: 8px; }
+.col { display: flex; flex-direction: column; gap: 26px; }
+.col h2 { margin: 0; font-size: 12px; font-weight: 600; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+.site { display: flex; flex-direction: column; gap: 6px; }
+.site .sn { font-size: 22px; font-weight: 500; letter-spacing: -.01em; }
 
-/* Panel */
-.scrim { position: fixed; inset: 0; z-index: 20; background: transparent; }
-.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100%); z-index: 21; background: var(--bg); border-left: 1px solid var(--line);
-  overflow-y: auto; display: grid; gap: 22px; align-content: start;
-  padding: calc(env(safe-area-inset-top, 0px) + 22px) max(24px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 30px) 24px; }
-.panel .x { justify-self: end; }
-.panel h2 { margin: 0; font-size: 44px; font-weight: 900; font-stretch: 62%; line-height: .9; overflow-wrap: anywhere; }
-.panel dl { margin: 0; display: grid; grid-template-columns: 90px 1fr; gap: 8px 12px; }
-.panel dt { color: var(--muted); }
-.panel dd { margin: 0; }
-.panel .last { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 12px 0; display: grid; gap: 4px; }
-.panel .last .k { color: var(--muted); }
-.panel .last b { font-size: 15px; font-weight: 800; }
-.panel .links { display: grid; }
-.panel .links a { padding: 10px 0; border-bottom: 1px solid var(--hair); display: flex; justify-content: space-between; }
+.foot { padding: 0 max(32px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 28px) max(32px, env(safe-area-inset-left, 0px)); color: var(--muted); max-width: 1600px; margin: 0 auto; }
 
-.foot { margin-top: 56px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); display: flex; justify-content: space-between; }
-@media (max-width: 820px) {
-  .bar { grid-template-columns: 1fr auto; }
-  .bar h1 { grid-column: 1 / -1; grid-row: 1; letter-spacing: .24em; }
-  .meta { display: none; }
-  .day { grid-template-columns: 1fr; gap: 14px; }
-  .date { position: static; grid-template-columns: auto 1fr; align-items: end; column-gap: 14px; }
-  .date .n { font-size: 60px; grid-row: span 2; }
-  .date .n.approx { font-size: 40px; }
-  .date .m { margin-top: 0; }
-  .covers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 14px; }
-  .cols { column-count: 2; column-gap: 20px; }
+@media (max-width: 1100px) { .card { display: none; } .inl { display: block; padding: 2px 0 18px; } .inl .facts { margin-top: 4px; } }
+@media (max-width: 760px) {
+  .head { grid-template-columns: 1fr auto; padding-left: 16px; padding-right: 16px; gap: 14px 16px; }
+  .mark { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  .nav { gap: 16px; }
+  .sl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .search input { width: 96px; }
+  .search input::placeholder { color: var(--ink); opacity: 1; }
+  .body { padding: 18px 16px 48px; gap: 18px; }
+  .side { position: static; max-width: none; flex: 1 1 100%; flex-direction: row; gap: 18px; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; scrollbar-width: none; }
+  .side::-webkit-scrollbar { display: none; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 14px; }
+  .row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+  .row .o { display: none; }
+  .grp { gap: 14px; }
+  .foot { padding-left: 16px; padding-right: 16px; }
 }
-@media (prefers-reduced-motion: reduce) { .ticker .track { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .pic img { transition: none; } }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="head">
-    <div class="bar">
-      <nav class="nav" role="tablist" aria-label="Views">
-        <button role="tab" id="tab-just" aria-selected="true" aria-controls="view-just">Just in</button>
-        <button role="tab" id="tab-index" aria-selected="false" aria-controls="view-index">Index</button>
-      </nav>
-      <h1>Lookbook Index</h1>
-      <div class="meta" id="meta">&nbsp;</div>
-    </div>
-    <div class="ticker" aria-label="Latest drops">
-      <span class="lead">Just in →</span>
-      <div class="track" id="track"><span>Loading</span></div>
-    </div>
-  </header>
+<header class="head">
+  <nav class="nav" aria-label="Sections">
+    <a href="#just" data-v="just">JUST IN</a>
+    <a href="#brands" data-v="brands">BRANDS</a>
+    <a href="#elsewhere" data-v="elsewhere">ELSEWHERE</a>
+  </nav>
+  <p class="mark"><a href="#just">LOOKBOOK INDEX</a></p>
+  <label class="search"><span class="sl">SEARCH</span><input id="q" type="search" placeholder="" autocomplete="off" spellcheck="false" aria-label="Search brands"></label>
+</header>
 
-  <main>
-    <section id="view-just" class="just" role="tabpanel" aria-labelledby="tab-just">
-      <p class="note" id="just-note">Loading the latest lookbooks…</p>
-      <div id="days"></div>
+<div class="body">
+  <aside class="side" id="side" aria-label="Category"></aside>
+  <main class="main">
+    <section id="v-just">
+      <p class="lede">Brands and their latest lookbooks, newest first.</p>
+      <div class="grid" id="grid"></div>
     </section>
-
-    <section id="view-index" class="idx" role="tabpanel" aria-labelledby="tab-index" hidden>
-      <div class="filters">
-        <div class="cats" id="cats" role="group" aria-label="Category"></div>
-        <div class="row2">
-          <input id="q" type="search" placeholder="Search label, city, style" aria-label="Search labels">
-          <label class="grp"><span>Origin</span><select id="f-origin"><option value="">All</option></select></label>
-          <div class="grp" role="group" aria-label="Price"><span>Price</span>
-            <button type="button" data-p="1" aria-pressed="false">$</button><button type="button" data-p="2" aria-pressed="false">$$</button><button type="button" data-p="3" aria-pressed="false">$$$</button><button type="button" data-p="4" aria-pressed="false">$$$$</button>
-          </div>
-          <div class="grp" role="group" aria-label="Order"><span>Order</span>
-            <button type="button" id="o-az" aria-pressed="true">A–Z</button><button type="button" id="o-date" aria-pressed="false">By date</button>
-          </div>
-        </div>
+    <section id="v-brands" hidden>
+      <nav class="letters" id="letters" aria-label="Jump to letter"></nav>
+      <div class="split">
+        <div class="list" id="list"></div>
+        <aside class="card" id="card" aria-live="polite"></aside>
       </div>
-      <div class="count"><span id="count"></span><button type="button" id="clear" hidden>Clear filters</button></div>
-      <div id="list"></div>
+    </section>
+    <section id="v-elsewhere" hidden>
+      <div class="cols" id="cols"></div>
     </section>
   </main>
-  <footer class="foot">Made by Jere · Updated weekly</footer>
 </div>
-<div id="panel-root"></div>
+<footer class="foot">Made by Jere</footer>
 
 <script>
 (function () {
-  const REGION = {
-    "France":"Europe","Italy":"Europe","United Kingdom":"Europe","Spain":"Europe","Germany":"Europe","Belgium":"Europe",
-    "Netherlands":"Europe","Sweden":"Europe","Denmark":"Europe","Norway":"Europe","Switzerland":"Europe",
-    "Japan":"Asia","South Korea":"Asia","China":"Asia","Hong Kong":"Asia","India":"Asia",
-    "United States":"North America","Canada":"North America",
-    "Mexico":"Latin America","Brazil":"Latin America","Argentina":"Latin America","Colombia":"Latin America",
-    "Nigeria":"Africa","South Africa":"Africa","Australia":"Oceania"
-  };
-  const CODE = { "France":"FR","Italy":"IT","United Kingdom":"UK","Spain":"ES","Germany":"DE","Belgium":"BE","Netherlands":"NL","Sweden":"SE","Denmark":"DK","Norway":"NO","Switzerland":"CH","Japan":"JP","South Korea":"KR","China":"CN","Hong Kong":"HK","India":"IN","United States":"US","Canada":"CA","Mexico":"MX","Brazil":"BR","Argentina":"AR","Colombia":"CO","Nigeria":"NG","South Africa":"ZA","Australia":"AU" };
-  const CATS = [["Luxury house","Luxury"],["Designer","Designer"],["Tailoring","Tailoring"],["Contemporary","Contemporary"],["Minimal","Minimal"],["Avant-garde","Avant-garde"],["Heritage & workwear","Workwear"],["Denim","Denim"],["Knitwear","Knit"],["Streetwear","Street"],["Outdoor & technical","Outdoor"],["High street & basics","Basics"]];
+  const CATS = ["Luxury house","Designer","Tailoring","Contemporary","Streetwear","Heritage & workwear","Outdoor & technical","Denim","Minimal","Avant-garde","Knitwear","High street & basics"];
   const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  const MONL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const TIER = ["", "High street", "Premium", "Designer", "Luxury"];
-  const FOR = { M: "Menswear", W: "Womenswear", U: "Men & women" };
+  const ELSEWHERE = [
+    ["Runway", [["Vogue Runway","Every show, every season","https://www.vogue.com/fashion-shows"],["Tagwalk","Search runways by item","https://www.tag-walk.com/en/"],["NOWFASHION","Live show coverage","https://nowfashion.com/"]]],
+    ["Shop", [["SSENSE","Designer menswear","https://www.ssense.com/en-us/men"],["Mr Porter","Luxury menswear","https://www.mrporter.com/en-us/"]]],
+    ["Read", [["SSENSE Editorial","Essays and interviews","https://www.ssense.com/en-us/editorial"],["Fantastic Man","Men’s magazine","https://www.fantasticman.com/"],["Permanent Style","Tailoring and craft","https://www.permanentstyle.com/"],["The Rake","Classic elegance","https://therake.com/us/"],["Highsnobiety","Streetwear and drops","https://www.highsnobiety.com/"],["Dazed","Fashion and culture","https://www.dazeddigital.com/"]]],
+    ["Industry", [["Pitti Immagine","Florence menswear fair","https://www.pittimmagine.com/"],["Models.com","Models and credits","https://models.com/"]]]
+  ];
 
   const $ = (s) => document.querySelector(s);
   const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
   const key = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "");
   const httpsUrl = (u) => (typeof u === "string" && /^https:\/\//i.test(u)) ? u : null;
-  const link = (href, txt) => { const a = el("a", null, txt); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
-  const store = { get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
-
-  let brands = [], drops = [], latest = new Map(), dbRef = null, assets = null, dbState = "loading";
-  const st = Object.assign({ cats: [], origin: "", prices: [], order: "az" }, store.get("lbi3") || {}); st.q = "";
-
-  // ---------- dates ----------
+  const ext = (href, txt) => { const a = el("a", null, txt); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
+  const okCover = (c) => typeof c === "string" && /^covers\/[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(c);
   const pd = (d) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ""); return m ? { y: +m[1], m: +m[2] - 1, d: +m[3] } : null; };
   const t = (x) => { const p = pd(x.date); return p ? Date.UTC(p.y, p.m, p.d) : 0; };
-  const today = () => { const n = new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); };
-  function ago(x) {
-    const p = pd(x.date); if (!p) return "";
-    if (x.approx) return "Date unconfirmed";
-    const days = Math.round((today() - t(x)) / 864e5);
-    if (days <= 0) return "Today"; if (days === 1) return "Yesterday";
-    if (days < 14) return days + " days ago"; if (days < 60) return Math.round(days / 7) + " weeks ago";
-    return Math.round(days / 30) + " months ago";
+  const when = (x) => { const p = pd(x.date); if (!p) return ""; return x.approx ? MON[p.m] + " " + p.y : p.d + " " + MON[p.m]; };
+  const letterOf = (n) => { const k = n.normalize("NFD").replace(/[̀-ͯ]/g, "")[0].toUpperCase(); return /[A-Z]/.test(k) ? k : "#"; };
+
+  let brands = [], drops = [], byKey = new Map(), latest = new Map();
+  const st = { view: "just", cat: "", q: "", sel: null };
+
+  function pic(cover, name) {
+    const d = el("div", "pic");
+    if (okCover(cover)) { const i = el("img"); i.src = cover; i.alt = ""; i.loading = "lazy"; i.onerror = () => { i.remove(); d.append(el("span", "ph", name)); }; d.append(i); }
+    else { d.setAttribute("aria-hidden", "true"); d.append(el("span", "ph", name)); }
+    return d;
   }
-  const shortD = (x) => { const p = pd(x.date); if (!p) return ""; return x.approx ? MON[p.m] + " " + String(p.y).slice(2) : p.d + " " + MON[p.m]; };
 
   // ---------- routing ----------
-  function show(v) {
-    const idx = v === "index";
-    $("#view-just").hidden = idx; $("#view-index").hidden = !idx;
-    $("#tab-just").setAttribute("aria-selected", String(!idx)); $("#tab-index").setAttribute("aria-selected", String(idx));
+  function route() {
+    const h = location.hash.slice(1);
+    st.view = h === "brands" || h === "index" ? "brands" : h === "elsewhere" ? "elsewhere" : "just";
+    for (const v of ["just", "brands", "elsewhere"]) $("#v-" + v).hidden = v !== st.view;
+    document.querySelectorAll(".nav a").forEach((a) => a.dataset.v === st.view ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+    $("#side").hidden = st.view === "elsewhere";
   }
-  const route = () => show(location.hash === "#index" ? "index" : "just");
-  $("#tab-just").onclick = () => { location.hash = "just"; };
-  $("#tab-index").onclick = () => { location.hash = "index"; };
-  addEventListener("hashchange", route); route();
+  addEventListener("hashchange", () => { route(); scrollTo(0, 0); });
 
-  const brandFor = (n) => brands.find((b) => key(b.n) === key(n));
-  function indexDrops() { latest = new Map(); for (const x of drops) { const k = key(x.brand), c = latest.get(k); if (!c || t(x) > t(c)) latest.set(k, x); } }
-  const sorted = () => drops.slice().sort((a, b) => t(b) - t(a) || (a.approx ? 1 : 0) - (b.approx ? 1 : 0));
-
-  // ---------- header ----------
-  function renderHeader() {
-    const s = sorted();
-    const firm = s.find((x) => !x.approx);
-    $("#meta").textContent = brands.length + " labels" + (firm ? " · Last drop " + shortD(firm) : "");
-    const tr = $("#track"); tr.replaceChildren();
-    if (!s.length) { tr.append(el("span", null, dbState === "none" ? "Sign in to see the feed" : "Nothing yet")); return; }
-    const items = s.slice(0, 12);
-    for (let pass = 0; pass < 2; pass++) for (const x of items) {
-      const b = el("button"); b.type = "button"; if (pass) b.setAttribute("aria-hidden", "true"), b.tabIndex = -1;
-      b.append(el("b", null, x.brand), document.createTextNode(" " + (x.season || x.title || "") + " · " + shortD(x)));
-      b.onclick = () => { location.hash = "just"; const c = document.getElementById("d-" + x._id); if (c) c.scrollIntoView({ block: "center" }); };
-      tr.append(b);
+  // ---------- sidebar ----------
+  function renderSide() {
+    const s = $("#side"); s.replaceChildren();
+    for (const c of [""].concat(CATS)) {
+      const b = el("button", null, c || "All"); b.type = "button"; b.setAttribute("aria-pressed", String(st.cat === c));
+      b.onclick = () => { st.cat = c; renderSide(); renderJust(); renderBrands(); };
+      s.append(b);
     }
   }
 
   // ---------- just in ----------
-  function cover(x, i) {
-    const art = el("article", "cv"); art.id = "d-" + x._id;
-    const u = httpsUrl(x.url);
-    const fr = el(u ? "a" : "div", "frame" + (i === 0 && !x.cover ? " inv" : ""));
-    if (u) { fr.href = u; fr.target = "_blank"; fr.rel = "noopener"; fr.setAttribute("aria-label", x.brand + " " + (x.title || "") + " on " + (x.source || "source")); }
-    if (x.cover && /^covers\/[\w.-]+\.(jpe?g|png|webp|gif)$/i.test(x.cover)) {
-      const img = el("img"); img.src = x.cover; img.alt = x.brand + " " + (x.title || "") + " cover"; img.loading = "lazy";
-      img.onerror = () => img.remove();
-      const sh = el("div", "shade"); sh.append(el("span", null, x.season || ""), el("span", null, shortD(x)));
-      fr.append(img, sh);
-    } else {
-      const top = el("div", "row"); top.append(el("span", null, x.kind || "Lookbook"), el("span", null, x.season || ""));
-      const mid = el("div"); const bn = el("div", "bn", x.brand || ""); bn.style.setProperty("--len", String(Math.max(4, (x.brand || "").length)));
-      mid.append(bn); if (x.title) mid.append(el("div", "sub", x.title));
-      const bot = el("div", "row"); bot.append(el("span", null, (brandFor(x.brand) || {}).c || ""), el("span", null, shortD(x)));
-      fr.append(top, mid, bot);
-    }
-    art.append(fr);
-    const cap = el("div", "cap");
-    const mb = brandFor(x.brand);
-    const bnm = el("button", "plain b", x.brand); bnm.type = "button"; if (mb) bnm.onclick = () => openPanel(mb); else bnm.disabled = true;
-    cap.append(bnm);
-    if (x.summary) cap.append(el("span", "t", x.summary));
-    const src = el("div", "src");
-    if (u) src.append(link(u, (x.source || "Source") + " ↗"));
-    cap.append(src);
-    art.append(cap);
-    return art;
-  }
-  function renderJust(msg) {
-    const note = $("#just-note"), days = $("#days");
-    days.replaceChildren();
-    if (msg) { note.hidden = false; note.textContent = msg; return; }
-    const s = sorted();
-    if (!s.length) { note.hidden = false; note.textContent = "No lookbooks logged yet."; return; }
-    note.hidden = true;
-    const groups = []; const by = new Map();
-    for (const x of s) {
-      const p = pd(x.date); if (!p) continue;
-      const k = x.approx ? "m" + p.y + "-" + p.m : x.date;
-      if (!by.has(k)) { const g = { x, p, approx: !!x.approx, items: [] }; by.set(k, g); groups.push(g); }
-      by.get(k).items.push(x);
-    }
-    let n = 0;
-    for (const g of groups) {
-      const day = el("section", "day");
-      const d = el("div", "date");
-      if (g.approx) { d.append(el("div", "n approx", MON[g.p.m])); d.append(el("div", "m", String(g.p.y))); }
-      else { d.append(el("div", "n", String(g.p.d).padStart(2, "0"))); d.append(el("div", "m", MON[g.p.m] + " " + g.p.y)); }
-      d.append(el("div", "ago", ago(g.x) + " · " + g.items.length + (g.items.length === 1 ? " drop" : " drops")));
-      const cv = el("div", "covers");
-      for (const x of g.items) cv.append(cover(x, n++));
-      day.append(d, cv);
-      days.append(day);
+  function renderJust() {
+    const g = $("#grid"); g.replaceChildren();
+    const list = drops.slice().sort((a, b) => t(b) - t(a))
+      .filter((x) => !st.cat || (byKey.get(key(x.brand)) || {}).cat === st.cat);
+    if (!list.length) { g.append(el("p", "empty", drops.length ? "Nothing new in this category yet." : "The feed didn't load. Reload to try again.")); return; }
+    for (const x of list) {
+      const b = byKey.get(key(x.brand)) || {};
+      const u = httpsUrl(x.url);
+      const a = el(u ? "a" : "div", "tile");
+      if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; }
+      const nm = x.kind === "Collab" && /×/.test(x.title || "") ? x.title.split(":")[0].trim() : x.brand;
+      a.append(pic(x.cover, nm), el("span", "tb", nm));
+      if (b.s) a.append(el("span", "mu", b.s));
+      a.append(el("span", "mu", [x.season, when(x)].filter(Boolean).join(" · ")));
+      g.append(a);
     }
   }
 
-  // ---------- index ----------
-  function buildIndex() {
-    const counts = {}; brands.forEach((b) => counts[b.cat] = (counts[b.cat] || 0) + 1);
-    const all = el("button", null, "All"); all.type = "button"; all.setAttribute("aria-pressed", String(!st.cats.length));
-    all.onclick = () => { st.cats = []; syncCats(); renderIndex(); };
-    $("#cats").append(all);
-    for (const [c, short] of CATS) {
-      if (!counts[c]) continue;
-      const b = el("button", null, short); b.type = "button"; b.dataset.cat = c; b.title = c + " · " + counts[c];
-      b.onclick = () => { st.cats = st.cats.includes(c) ? st.cats.filter((v) => v !== c) : st.cats.concat(c); syncCats(); renderIndex(); };
-      $("#cats").append(b);
-    }
-    syncCats();
-    const regions = [...new Set(brands.map((b) => REGION[b.c]))].sort();
-    const countries = [...new Set(brands.map((b) => b.c))].sort();
-    const og1 = el("optgroup"); og1.label = "Region"; regions.forEach((r) => { const o = el("option", null, r); o.value = "r:" + r; og1.append(o); });
-    const og2 = el("optgroup"); og2.label = "Country"; countries.forEach((c) => { const o = el("option", null, c); o.value = "c:" + c; og2.append(o); });
-    $("#f-origin").append(og1, og2); $("#f-origin").value = st.origin;
-    $("#f-origin").onchange = (e) => { st.origin = e.target.value; renderIndex(); };
-    document.querySelectorAll(".grp [data-p]").forEach((b) => {
-      const p = +b.dataset.p; b.setAttribute("aria-pressed", String(st.prices.includes(p)));
-      b.onclick = () => { st.prices = st.prices.includes(p) ? st.prices.filter((v) => v !== p) : st.prices.concat(p); b.setAttribute("aria-pressed", String(st.prices.includes(p))); renderIndex(); };
-    });
-    const setOrder = (o) => { st.order = o; $("#o-az").setAttribute("aria-pressed", String(o === "az")); $("#o-date").setAttribute("aria-pressed", String(o === "date")); renderIndex(); };
-    $("#o-az").onclick = () => setOrder("az"); $("#o-date").onclick = () => setOrder("date");
-    $("#o-az").setAttribute("aria-pressed", String(st.order === "az")); $("#o-date").setAttribute("aria-pressed", String(st.order === "date"));
-    let tm; $("#q").oninput = (e) => { clearTimeout(tm); tm = setTimeout(() => { st.q = e.target.value; renderIndex(); }, 90); };
-    $("#clear").onclick = () => {
-      Object.assign(st, { cats: [], origin: "", prices: [], q: "" }); $("#q").value = ""; $("#f-origin").value = "";
-      document.querySelectorAll(".grp [data-p]").forEach((b) => b.setAttribute("aria-pressed", "false")); syncCats(); renderIndex();
-    };
-  }
-  function syncCats() {
-    $("#cats").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.cat ? st.cats.includes(b.dataset.cat) : !st.cats.length)));
-  }
-  function filtered() {
+  // ---------- brands ----------
+  function shown() {
     const words = st.q.toLowerCase().split(/\s+/).map(key).filter(Boolean);
     return brands.filter((b) => {
-      if (st.cats.length && !st.cats.includes(b.cat)) return false;
-      if (st.origin.startsWith("r:") && REGION[b.c] !== st.origin.slice(2)) return false;
-      if (st.origin.startsWith("c:") && b.c !== st.origin.slice(2)) return false;
-      if (st.prices.length && !st.prices.includes(b.p)) return false;
-      if (words.length) { const h = key([b.n, b.c, b.ci, b.cat, (b.t || []).join(" ")].join(" ")); if (!words.every((w) => h.includes(w))) return false; }
+      if (st.cat && b.cat !== st.cat) return false;
+      if (words.length) { const h = key([b.n, b.s, b.c, b.ci, b.cat, (b.t || []).join(" ")].join(" ")); if (!words.every((w) => h.includes(w))) return false; }
       return true;
     });
   }
-  function entry(b) {
-    const e = el("button", "plain entry"); e.type = "button";
-    e.append(document.createTextNode(b.n));
+  function details(b, wrap) {
     const lt = latest.get(key(b.n));
-    if (lt) e.append(el("span", "d", shortD(lt)));
-    e.append(el("sup", null, (CODE[b.c] || "") + " " + "$".repeat(b.p)));
-    e.onclick = () => openPanel(b);
-    return e;
+    const dl = el("dl", "facts");
+    const add = (k, v) => { if (v) dl.append(el("dt", null, k), el("dd", null, v)); };
+    add("From", [b.ci, b.c].filter(Boolean).join(", ")); add("Est.", b.y ? String(b.y) : ""); add("Category", b.cat); add("Price", TIER[b.p] || "");
+    if (lt) add("Latest", [lt.season, when(lt)].filter(Boolean).join(" · "));
+    wrap.append(dl);
+    const o = el("div", "out");
+    const L = (href, txt) => { const a = ext(href, txt); a.append(el("span", null, "↗")); o.append(a); };
+    if (lt && httpsUrl(lt.url)) L(lt.url, "Latest collection");
+    L("https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(b.n + " lookbook"), "Lookbooks");
+    L("https://www.google.com/search?q=" + encodeURIComponent(b.n + " site:vogue.com/fashion-shows"), "Runway");
+    if (b.u) L("https://" + b.u, b.u);
+    wrap.append(o);
   }
-  function renderIndex() {
-    store.set("lbi3", { cats: st.cats, origin: st.origin, prices: st.prices, order: st.order });
+  function renderCard() {
+    const c = $("#card"); c.replaceChildren();
+    const b = st.sel && brands.find((x) => x.n === st.sel);
+    if (!b) return;
+    const lt = latest.get(key(b.n));
+    c.append(pic(lt && lt.cover, b.n), el("span", "cn", b.n), el("span", "mu", b.s || ""));
+    details(b, c);
+  }
+  function select(n, rerender) {
+    if (st.sel === n && !rerender) return;
+    st.sel = n; renderCard();
+    document.querySelectorAll(".row").forEach((r) => r.setAttribute("aria-expanded", String(r.dataset.n === n)));
+    document.querySelectorAll(".inl").forEach((i) => i.remove());
+    const r = [...document.querySelectorAll(".row")].find((x) => x.dataset.n === n);
+    if (r) { const b = brands.find((x) => x.n === n); const box = el("div", "inl"); details(b, box); r.after(box); }
+  }
+  function renderBrands() {
     const L = $("#list"); L.replaceChildren();
-    const r = filtered();
-    const withDrop = r.filter((b) => latest.has(key(b.n))).length;
-    $("#count").textContent =r.length + " of " + brands.length + " labels · " + withDrop + " with recent drops";
-    $("#clear").hidden = !(st.cats.length || st.origin || st.prices.length || st.q);
-    if (!r.length) { L.append(el("p", "note", "No labels match. Loosen a filter.")); return; }
-    if (st.order === "az") {
-      const cols = el("div", "cols");
-      const groups = new Map();
-      r.slice().sort((a, b) => a.n.localeCompare(b.n)).forEach((b) => {
-        let k = b.n.normalize("NFD").replace(/[̀-ͯ]/g, "")[0].toUpperCase(); if (!/[A-Z]/.test(k)) k = "#";
-        if (!groups.has(k)) groups.set(k, []); groups.get(k).push(b);
-      });
-      for (const [k, list] of groups) {
-        const g = el("div", "letter"); g.append(el("div", "L", k));
-        list.forEach((b) => g.append(entry(b)));
-        cols.append(g);
+    const r = shown().sort((a, b) => a.n.localeCompare(b.n));
+    const groups = new Map();
+    r.forEach((b) => { const k = letterOf(b.n); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(b); });
+    const lt = $("#letters"); lt.replaceChildren();
+    ["#"].concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")).forEach((ch) => {
+      const a = el("a", groups.has(ch) ? null : "off", ch); a.href = "#brands";
+      if (groups.has(ch)) a.onclick = (e) => { e.preventDefault(); document.getElementById("L-" + ch).scrollIntoView({ block: "start" }); };
+      else { a.setAttribute("aria-disabled", "true"); a.tabIndex = -1; }
+      lt.append(a);
+    });
+    if (!r.length) { L.append(el("p", "empty", "No brands match.")); $("#card").replaceChildren(); return; }
+    for (const [k, list] of groups) {
+      const sec = el("section", "grp"); sec.id = "L-" + k;
+      sec.append(el("h2", null, k));
+      const rows = el("div", "rows");
+      for (const b of list) {
+        const row = el("button", "row"); row.type = "button"; row.dataset.n = b.n; row.setAttribute("aria-expanded", "false");
+        row.append(el("span", "n", b.n), el("span", "s", b.s || ""), el("span", "o", b.c));
+        row.onmouseenter = () => { if (matchMedia("(min-width: 1101px)").matches) select(b.n); };
+        row.onclick = () => { if (st.sel === b.n && !matchMedia("(min-width: 1101px)").matches) { st.sel = null; select(null, true); } else select(b.n, true); };
+        rows.append(row);
       }
-      L.append(cols);
-    } else {
-      const wrap = el("div", "ledger-wrap"); const tb = el("table", "ledger");
-      const th = el("tr"); ["Date", "Label", "Latest drop", "Origin", "Price"].forEach((h) => th.append(el("th", null, h)));
-      const thead = el("thead"); thead.append(th); tb.append(thead);
-      const body = el("tbody");
-      const dated = r.filter((b) => latest.has(key(b.n))).sort((a, b) => t(latest.get(key(b.n))) - t(latest.get(key(a.n))));
-      const rest = r.filter((b) => !latest.has(key(b.n))).sort((a, b) => a.n.localeCompare(b.n));
-      const row = (b, lt) => {
-        const tr = el("tr");
-        tr.append(el("td", "dt", lt ? shortD(lt) + (lt.approx ? " ≈" : "") : "—"));
-        const tdb = el("td", "br"); const bt = el("button", "plain", b.n); bt.type = "button"; bt.onclick = () => openPanel(b); tdb.append(bt); tr.append(tdb);
-        const tdd = el("td"); if (lt) { const u = httpsUrl(lt.url); tdd.append(u ? link(u, (lt.title || lt.season || "") + " ↗") : document.createTextNode(lt.title || "")); } tr.append(tdd);
-        tr.append(el("td", "mu", b.ci + ", " + (CODE[b.c] || b.c)), el("td", "mu", "$".repeat(b.p)));
-        return tr;
-      };
-      dated.forEach((b) => body.append(row(b, latest.get(key(b.n)))));
-      if (rest.length) { const s = el("tr", "sep"); const td = el("td", null, "No drop logged yet · " + rest.length); td.colSpan = 5; s.append(td); body.append(s); }
-      rest.forEach((b) => body.append(row(b, null)));
-      tb.append(body); wrap.append(tb); L.append(wrap);
+      sec.append(rows); L.append(sec);
+    }
+    if (!st.sel || !r.some((b) => b.n === st.sel)) st.sel = matchMedia("(min-width: 1101px)").matches ? r[0].n : null;
+    select(st.sel, true);
+  }
+
+  // ---------- elsewhere ----------
+  function renderElsewhere() {
+    const C = $("#cols");
+    for (const [h, items] of ELSEWHERE) {
+      const col = el("section", "col"); col.append(el("h2", "up", h));
+      for (const [n, w, u] of items) { const a = ext(u, null); a.className = "site"; a.append(el("span", "sn", n + " ↗"), el("span", "mu", w)); col.append(a); }
+      C.append(col);
     }
   }
 
-  // ---------- panel ----------
-  let lastFocus = null;
-  function closePanel() { $("#panel-root").replaceChildren(); document.removeEventListener("keydown", esc); if (lastFocus) lastFocus.focus(); }
-  function esc(e) { if (e.key === "Escape") closePanel(); }
-  function openPanel(b) {
-    lastFocus = document.activeElement;
-    const root = $("#panel-root"); root.replaceChildren();
-    const scrim = el("div", "scrim"); scrim.onclick = closePanel;
-    const p = el("aside", "panel"); p.setAttribute("role", "dialog"); p.setAttribute("aria-modal", "true"); p.setAttribute("aria-label", b.n);
-    const x = el("button", "plain x", "Close ✕"); x.type = "button"; x.onclick = closePanel;
-    p.append(x, el("h2", null, b.n));
-    const lt = latest.get(key(b.n));
-    const last = el("div", "last");
-    if (lt) {
-      last.append(el("span", "k", "Latest · " + shortD(lt) + (lt.approx ? " (month only)" : "") + " · " + ago(lt)));
-      last.append(el("b", null, [lt.title, lt.season].filter(Boolean).join(" · ")));
-      const u = httpsUrl(lt.url); if (u) last.append(link(u, "Read on " + (lt.source || "source") + " ↗"));
-    } else last.append(el("span", "k", "No drop logged yet"));
-    p.append(last);
-    const dl = el("dl"); const add = (k, v) => { dl.append(el("dt", null, k), el("dd", null, v)); };
-    add("From", b.ci + ", " + b.c); if (b.y) add("Est.", String(b.y)); add("Category", b.cat); add("Cut", FOR[b.g] || "");
-    add("Price", "$".repeat(b.p) + " · " + TIER[b.p]); if (b.t && b.t.length) add("Known for", b.t.join(", "));
-    p.append(dl);
-    const ls = el("div", "links");
-    const L = (href, a, bt) => { const l = link(href, a); l.append(el("span", null, bt)); ls.append(l); };
-    L("https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(b.n + " lookbook"), "Lookbooks", "↗");
-    L("https://www.google.com/search?q=" + encodeURIComponent(b.n + " site:vogue.com/fashion-shows"), "Runway", "↗");
-    if (b.u) L("https://" + b.u, b.u, "↗");
-    p.append(ls);
-    root.append(scrim, p); document.addEventListener("keydown", esc); x.focus();
-  }
+  // ---------- search ----------
+  let tm;
+  $("#q").addEventListener("input", (e) => {
+    clearTimeout(tm);
+    tm = setTimeout(() => { st.q = e.target.value; if (st.view !== "brands") location.hash = "brands"; renderBrands(); }, 90);
+  });
 
   // ---------- boot ----------
-  function refreshAll() { if (!brands.length) return; renderHeader(); renderJust(); renderIndex(); }
+  if (matchMedia("(max-width: 760px)").matches) $("#q").placeholder = "SEARCH";
+  route(); renderSide(); renderElsewhere();
   const getJSON = (u) => fetch(u, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
-  Promise.all([getJSON("brands.json"), getJSON("drops.json").catch(() => null)]).then(([b, d]) => {
-    brands = b;
-    drops = Array.isArray(d) ? d.filter((x) => x && x.brand && x.date).map((x, i) => Object.assign({ _id: key(x.id || x.brand + x.date + i) }, x)) : [];
-    dbState = Array.isArray(d) ? "ready" : "error";
-    indexDrops(); buildIndex(); renderIndex(); renderHeader();
-    renderJust(Array.isArray(d) ? null : "The feed didn't load. Reload to try again. The index still works.");
-  }).catch(() => { $("#list").append(el("p", "note", "The label list didn't load. Reload to try again.")); $("#just-note").textContent = "The site didn't load. Reload to try again."; });
+  Promise.all([getJSON("brands.json"), getJSON("drops.json").catch(() => [])]).then(([b, d]) => {
+    brands = b; byKey = new Map(b.map((x) => [key(x.n), x]));
+    drops = Array.isArray(d) ? d.filter((x) => x && x.brand && x.date) : [];
+    latest = new Map(); for (const x of drops) { const k = key(x.brand), c = latest.get(k); if (!c || t(x) > t(c)) latest.set(k, x); }
+    renderJust(); renderBrands();
+  }).catch(() => { $("#grid").append(el("p", "empty", "The site didn't load. Reload to try again.")); });
 })();
 </script>
-
 </body>
 </html>
