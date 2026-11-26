@@ -144,7 +144,21 @@ await pool(drops.filter((d) => !d.cover && /^https:\/\//.test(d.url || "")), 4, 
   try { d.ia = await cover(d.url, rel); d.cover = rel; got++; } catch (e) { misses.push(`drop  ${d.brand}: ${e.message}`); }
 });
 
-await pool(brands.filter((b) => !b.logo), 4, async (b) => {
+// Hand-picked logos: any file in covers/logos/inbox/ named after a brand (e.g. "Tom Ford.png", "tom-ford.svg")
+// replaces that brand's logo. The inbox file is removed once it's processed.
+await fs.mkdir("covers/logos/inbox", { recursive: true });
+for (const f of await fs.readdir("covers/logos/inbox")) {
+  if (f.startsWith(".") || /\.(txt|md)$/i.test(f)) continue;
+  const b = brands.find((x) => slug(x.n) === slug(f.replace(/\.[^.]+$/, "")));
+  if (!b) { misses.push(`inbox ${f}: no brand with that name`); continue; }
+  const rel = "covers/logos/" + slug(b.n) + ".webp";
+  try {
+    b.la = await saveLogo(await fs.readFile("covers/logos/inbox/" + f), rel); b.logo = rel; b.logoAuto = false; got++;
+    await fs.rm("covers/logos/inbox/" + f);
+  } catch (e) { misses.push(`inbox ${f}: ${e.message}`); }
+}
+
+await pool(brands.filter((b) => !b.logo && b.logoAuto !== false), 4, async (b) => {
   const rel = "covers/logos/" + slug(b.n) + ".webp";
   const why = [];
   try { b.la = await saveLogo(await wikidataLogo(b), rel); b.logo = rel; got++; return; } catch (e) { why.push("wikidata: " + e.message); }
@@ -154,7 +168,7 @@ await pool(brands.filter((b) => !b.logo), 4, async (b) => {
 
 await fs.writeFile("drops.json", JSON.stringify(drops, null, 2) + "\n");
 await writeList("brands.json", brands);
-await fs.writeFile("covers/logos/MISSING.txt", misses.filter((m) => m.startsWith("logo")).sort().join("\n") + "\n");
+await fs.writeFile("covers/logos/MISSING.txt", brands.filter((b) => !b.logo).map((b) => `${b.n}  →  save as ${slug(b.n)}  ·  https://${b.u || ""}`).join("\n") + "\n");
 
 const report = `Fetched ${got} images. ${misses.length} misses.\n\n` + misses.sort().join("\n");
 console.log(report);
